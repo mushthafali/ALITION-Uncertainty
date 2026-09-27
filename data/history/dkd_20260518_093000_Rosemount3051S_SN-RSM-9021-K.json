@@ -1,0 +1,1790 @@
+{
+    "version": "2.0.0",
+    "timestamp": "2026-05-18T09:30:00.000000",
+    "input": {
+        "metadata": {
+            "operator_name": "Eko Prasetyo",
+            "instrument_model": "Rosemount 3051S",
+            "serial_number": "SN-RSM-9021-K",
+            "tag_number": "PT-301C",
+            "date": "2026-05-18",
+            "location": "High Pressure Lab",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "lrv": 0.0,
+        "urv": 200.0,
+        "tolerance_pct": 0.075,
+        "points": [
+            {
+                "set_point": 0.0,
+                "readings_up": [
+                    0.001
+                ],
+                "readings_down": [
+                    0.021
+                ]
+            },
+            {
+                "set_point": 25.0,
+                "readings_up": [
+                    25.043
+                ],
+                "readings_down": [
+                    25.109
+                ]
+            },
+            {
+                "set_point": 50.0,
+                "readings_up": [
+                    50.08
+                ],
+                "readings_down": [
+                    50.185
+                ]
+            },
+            {
+                "set_point": 75.0,
+                "readings_up": [
+                    75.105
+                ],
+                "readings_down": [
+                    75.236
+                ]
+            },
+            {
+                "set_point": 100.0,
+                "readings_up": [
+                    100.117
+                ],
+                "readings_down": [
+                    100.257
+                ]
+            },
+            {
+                "set_point": 125.0,
+                "readings_up": [
+                    125.113
+                ],
+                "readings_down": [
+                    125.244
+                ]
+            },
+            {
+                "set_point": 150.0,
+                "readings_up": [
+                    150.096
+                ],
+                "readings_down": [
+                    150.201
+                ]
+            },
+            {
+                "set_point": 175.0,
+                "readings_up": [
+                    175.067
+                ],
+                "readings_down": [
+                    175.133
+                ]
+            },
+            {
+                "set_point": 200.0,
+                "readings_up": [
+                    200.033
+                ],
+                "readings_down": [
+                    200.053
+                ]
+            }
+        ]
+    },
+    "result": {
+        "overall_status": "FAIL",
+        "span": 200.0,
+        "max_error_pct_span": 0.11349999999999999,
+        "actual_accuracy_pct": 0.11349999999999999,
+        "mean_error": 0.15633333333333332,
+        "std_dev": 0.4,
+        "rmse": 0.16713800020076558,
+        "linearity_error_pct": 0.015,
+        "zero_error": 0.051,
+        "span_error": 0.083,
+        "max_hysteresis": 0.14,
+        "point_results": [
+            {
+                "set_point": 0.0,
+                "avg_reading": 0.051,
+                "error": 0.051,
+                "error_pct_span": 0.025499999999999995,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 25.0,
+                "avg_reading": 25.116,
+                "error": 0.116,
+                "error_pct_span": 0.058,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 50.0,
+                "avg_reading": 50.1725,
+                "error": 0.1725,
+                "error_pct_span": 0.08625,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 75.0,
+                "avg_reading": 75.2105,
+                "error": 0.2105,
+                "error_pct_span": 0.10525000000000001,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 100.0,
+                "avg_reading": 100.227,
+                "error": 0.227,
+                "error_pct_span": 0.11349999999999999,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 125.0,
+                "avg_reading": 125.2185,
+                "error": 0.2185,
+                "error_pct_span": 0.10925,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 150.0,
+                "avg_reading": 150.1885,
+                "error": 0.1885,
+                "error_pct_span": 0.09425,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 175.0,
+                "avg_reading": 175.14,
+                "error": 0.14,
+                "error_pct_span": 0.07,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 200.0,
+                "avg_reading": 200.083,
+                "error": 0.083,
+                "error_pct_span": 0.0415,
+                "std_dev": 0.2,
+                "repeatability_error": 0.04,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            }
+        ]
+    },
+    "dkd_data": {
+        "sequence": "A",
+        "setup": {
+            "input_unit": "bar",
+            "lrv": 0.0,
+            "urv": 200.0,
+            "resolution": 0.05,
+            "mpe_percent": 0.075,
+            "calibrator_type": "DIGITAL",
+            "height_diff": 0.0,
+            "medium_density": 1.2,
+            "std_full_scale": 200.0,
+            "std_accuracy_percent": 0.025,
+            "u_standard_dwt": 0.0,
+            "alpha_beta": 0.0,
+            "rho_m": 8000.0,
+            "lambda_val": 0.0
+        },
+        "meta": {
+            "operator_name": "Eko Prasetyo",
+            "instrument_model": "Rosemount 3051S",
+            "serial_number": "SN-RSM-9021-K",
+            "tag_number": "PT-301C",
+            "date": "2026-05-18",
+            "location": "High Pressure Lab",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "cert_number": "ALT/CAL/2026/05/0007",
+        "setpoints": [
+            0.0,
+            12.5,
+            25.0,
+            37.5,
+            50.0,
+            62.5,
+            75.0,
+            87.5,
+            100.0
+        ],
+        "mSeries": [
+            "M1",
+            "M2",
+            "M3",
+            "M4",
+            "M5",
+            "M6"
+        ],
+        "measurementData": {
+            "M1": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.001,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.043,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.08,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.105,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.117,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 125.0,
+                    "reading_master": 125.0,
+                    "reading_uut": 125.113,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 150.0,
+                    "reading_master": 150.0,
+                    "reading_uut": 150.096,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 175.0,
+                    "reading_master": 175.0,
+                    "reading_uut": 175.067,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 200.0,
+                    "reading_master": 200.0,
+                    "reading_uut": 200.033,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:100:00"
+                }
+            ],
+            "M2": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.021,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.109,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.185,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.236,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.257,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 125.0,
+                    "reading_master": 125.0,
+                    "reading_uut": 125.244,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 150.0,
+                    "reading_master": 150.0,
+                    "reading_uut": 150.201,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 175.0,
+                    "reading_master": 175.0,
+                    "reading_uut": 175.133,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 200.0,
+                    "reading_master": 200.0,
+                    "reading_uut": 200.053,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:100:00"
+                }
+            ],
+            "M3": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.041,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.083,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.12,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.145,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.157,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 125.0,
+                    "reading_master": 125.0,
+                    "reading_uut": 125.153,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 150.0,
+                    "reading_master": 150.0,
+                    "reading_uut": 150.136,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 175.0,
+                    "reading_master": 175.0,
+                    "reading_uut": 175.107,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 200.0,
+                    "reading_master": 200.0,
+                    "reading_uut": 200.073,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:100:00"
+                }
+            ],
+            "M4": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.061,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.149,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.225,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.276,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.297,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 125.0,
+                    "reading_master": 125.0,
+                    "reading_uut": 125.284,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 150.0,
+                    "reading_master": 150.0,
+                    "reading_uut": 150.241,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 175.0,
+                    "reading_master": 175.0,
+                    "reading_uut": 175.173,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 200.0,
+                    "reading_master": 200.0,
+                    "reading_uut": 200.093,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:100:00"
+                }
+            ],
+            "M5": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.081,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.123,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.16,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.185,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.197,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 125.0,
+                    "reading_master": 125.0,
+                    "reading_uut": 125.193,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 150.0,
+                    "reading_master": 150.0,
+                    "reading_uut": 150.176,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 175.0,
+                    "reading_master": 175.0,
+                    "reading_uut": 175.147,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 200.0,
+                    "reading_master": 200.0,
+                    "reading_uut": 200.113,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:100:00"
+                }
+            ],
+            "M6": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.101,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.189,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.265,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.316,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.337,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 125.0,
+                    "reading_master": 125.0,
+                    "reading_uut": 125.324,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 150.0,
+                    "reading_master": 150.0,
+                    "reading_uut": 150.281,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 175.0,
+                    "reading_master": 175.0,
+                    "reading_uut": 175.213,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 200.0,
+                    "reading_master": 200.0,
+                    "reading_uut": 200.133,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2026-05-18T10:100:00"
+                }
+            ]
+        },
+        "rowResults": [
+            {
+                "pct": 0.0,
+                "nom_ideal": 0.0,
+                "p_std": 0.0,
+                "mean": 0.051,
+                "dev": 0.051,
+                "h_f": 0.02,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.00577,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.28988,
+                "U": 0.5798,
+                "pass": false,
+                "m_vals": {
+                    "M1": 0.001,
+                    "M2": 0.021,
+                    "M3": 0.041,
+                    "M4": 0.061,
+                    "M5": 0.081,
+                    "M6": 0.101
+                },
+                "master_vals": {
+                    "M1": 0.0,
+                    "M2": 0.0,
+                    "M3": 0.0,
+                    "M4": 0.0,
+                    "M5": 0.0,
+                    "M6": 0.0
+                },
+                "m1": 0.001,
+                "m2": 0.021,
+                "m3": 0.041,
+                "m4": 0.061,
+                "m5": 0.081,
+                "m6": 0.101
+            },
+            {
+                "pct": 12.5,
+                "nom_ideal": 25.0,
+                "p_std": 25.0,
+                "mean": 25.116,
+                "dev": 0.116,
+                "h_f": 0.066,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.01905,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29045,
+                "U": 0.5809,
+                "pass": false,
+                "m_vals": {
+                    "M1": 25.043,
+                    "M2": 25.109,
+                    "M3": 25.083,
+                    "M4": 25.149,
+                    "M5": 25.123,
+                    "M6": 25.189
+                },
+                "master_vals": {
+                    "M1": 25.0,
+                    "M2": 25.0,
+                    "M3": 25.0,
+                    "M4": 25.0,
+                    "M5": 25.0,
+                    "M6": 25.0
+                },
+                "m1": 25.043,
+                "m2": 25.109,
+                "m3": 25.083,
+                "m4": 25.149,
+                "m5": 25.123,
+                "m6": 25.189
+            },
+            {
+                "pct": 25.0,
+                "nom_ideal": 50.0,
+                "p_std": 50.0,
+                "mean": 50.1725,
+                "dev": 0.1725,
+                "h_f": 0.105,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03031,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29141,
+                "U": 0.5828,
+                "pass": false,
+                "m_vals": {
+                    "M1": 50.08,
+                    "M2": 50.185,
+                    "M3": 50.12,
+                    "M4": 50.225,
+                    "M5": 50.16,
+                    "M6": 50.265
+                },
+                "master_vals": {
+                    "M1": 50.0,
+                    "M2": 50.0,
+                    "M3": 50.0,
+                    "M4": 50.0,
+                    "M5": 50.0,
+                    "M6": 50.0
+                },
+                "m1": 50.08,
+                "m2": 50.185,
+                "m3": 50.12,
+                "m4": 50.225,
+                "m5": 50.16,
+                "m6": 50.265
+            },
+            {
+                "pct": 37.5,
+                "nom_ideal": 75.0,
+                "p_std": 75.0,
+                "mean": 75.2105,
+                "dev": 0.2105,
+                "h_f": 0.131,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03782,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29228,
+                "U": 0.5846,
+                "pass": false,
+                "m_vals": {
+                    "M1": 75.105,
+                    "M2": 75.236,
+                    "M3": 75.145,
+                    "M4": 75.276,
+                    "M5": 75.185,
+                    "M6": 75.316
+                },
+                "master_vals": {
+                    "M1": 75.0,
+                    "M2": 75.0,
+                    "M3": 75.0,
+                    "M4": 75.0,
+                    "M5": 75.0,
+                    "M6": 75.0
+                },
+                "m1": 75.105,
+                "m2": 75.236,
+                "m3": 75.145,
+                "m4": 75.276,
+                "m5": 75.185,
+                "m6": 75.316
+            },
+            {
+                "pct": 50.0,
+                "nom_ideal": 100.0,
+                "p_std": 100.0,
+                "mean": 100.227,
+                "dev": 0.227,
+                "h_f": 0.14,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.04042,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29263,
+                "U": 0.5853,
+                "pass": false,
+                "m_vals": {
+                    "M1": 100.117,
+                    "M2": 100.257,
+                    "M3": 100.157,
+                    "M4": 100.297,
+                    "M5": 100.197,
+                    "M6": 100.337
+                },
+                "master_vals": {
+                    "M1": 100.0,
+                    "M2": 100.0,
+                    "M3": 100.0,
+                    "M4": 100.0,
+                    "M5": 100.0,
+                    "M6": 100.0
+                },
+                "m1": 100.117,
+                "m2": 100.257,
+                "m3": 100.157,
+                "m4": 100.297,
+                "m5": 100.197,
+                "m6": 100.337
+            },
+            {
+                "pct": 62.5,
+                "nom_ideal": 125.0,
+                "p_std": 125.0,
+                "mean": 125.2185,
+                "dev": 0.2185,
+                "h_f": 0.131,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03782,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29228,
+                "U": 0.5846,
+                "pass": false,
+                "m_vals": {
+                    "M1": 125.113,
+                    "M2": 125.244,
+                    "M3": 125.153,
+                    "M4": 125.284,
+                    "M5": 125.193,
+                    "M6": 125.324
+                },
+                "master_vals": {
+                    "M1": 125.0,
+                    "M2": 125.0,
+                    "M3": 125.0,
+                    "M4": 125.0,
+                    "M5": 125.0,
+                    "M6": 125.0
+                },
+                "m1": 125.113,
+                "m2": 125.244,
+                "m3": 125.153,
+                "m4": 125.284,
+                "m5": 125.193,
+                "m6": 125.324
+            },
+            {
+                "pct": 75.0,
+                "nom_ideal": 150.0,
+                "p_std": 150.0,
+                "mean": 150.1885,
+                "dev": 0.1885,
+                "h_f": 0.105,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03031,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29141,
+                "U": 0.5828,
+                "pass": false,
+                "m_vals": {
+                    "M1": 150.096,
+                    "M2": 150.201,
+                    "M3": 150.136,
+                    "M4": 150.241,
+                    "M5": 150.176,
+                    "M6": 150.281
+                },
+                "master_vals": {
+                    "M1": 150.0,
+                    "M2": 150.0,
+                    "M3": 150.0,
+                    "M4": 150.0,
+                    "M5": 150.0,
+                    "M6": 150.0
+                },
+                "m1": 150.096,
+                "m2": 150.201,
+                "m3": 150.136,
+                "m4": 150.241,
+                "m5": 150.176,
+                "m6": 150.281
+            },
+            {
+                "pct": 87.5,
+                "nom_ideal": 175.0,
+                "p_std": 175.0,
+                "mean": 175.14,
+                "dev": 0.14,
+                "h_f": 0.066,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.01905,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29045,
+                "U": 0.5809,
+                "pass": false,
+                "m_vals": {
+                    "M1": 175.067,
+                    "M2": 175.133,
+                    "M3": 175.107,
+                    "M4": 175.173,
+                    "M5": 175.147,
+                    "M6": 175.213
+                },
+                "master_vals": {
+                    "M1": 175.0,
+                    "M2": 175.0,
+                    "M3": 175.0,
+                    "M4": 175.0,
+                    "M5": 175.0,
+                    "M6": 175.0
+                },
+                "m1": 175.067,
+                "m2": 175.133,
+                "m3": 175.107,
+                "m4": 175.173,
+                "m5": 175.147,
+                "m6": 175.213
+            },
+            {
+                "pct": 100.0,
+                "nom_ideal": 200.0,
+                "p_std": 200.0,
+                "mean": 200.083,
+                "dev": 0.083,
+                "h_f": 0.02,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.00577,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.28988,
+                "U": 0.5798,
+                "pass": false,
+                "m_vals": {
+                    "M1": 200.033,
+                    "M2": 200.053,
+                    "M3": 200.073,
+                    "M4": 200.093,
+                    "M5": 200.113,
+                    "M6": 200.133
+                },
+                "master_vals": {
+                    "M1": 200.0,
+                    "M2": 200.0,
+                    "M3": 200.0,
+                    "M4": 200.0,
+                    "M5": 200.0,
+                    "M6": 200.0
+                },
+                "m1": 200.033,
+                "m2": 200.053,
+                "m3": 200.073,
+                "m4": 200.093,
+                "m5": 200.113,
+                "m6": 200.133
+            }
+        ],
+        "lastRowResults": [
+            {
+                "pct": 0.0,
+                "nom_ideal": 0.0,
+                "p_std": 0.0,
+                "mean": 0.051,
+                "dev": 0.051,
+                "h_f": 0.02,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.00577,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.28988,
+                "U": 0.5798,
+                "pass": false,
+                "m_vals": {
+                    "M1": 0.001,
+                    "M2": 0.021,
+                    "M3": 0.041,
+                    "M4": 0.061,
+                    "M5": 0.081,
+                    "M6": 0.101
+                },
+                "master_vals": {
+                    "M1": 0.0,
+                    "M2": 0.0,
+                    "M3": 0.0,
+                    "M4": 0.0,
+                    "M5": 0.0,
+                    "M6": 0.0
+                },
+                "m1": 0.001,
+                "m2": 0.021,
+                "m3": 0.041,
+                "m4": 0.061,
+                "m5": 0.081,
+                "m6": 0.101
+            },
+            {
+                "pct": 12.5,
+                "nom_ideal": 25.0,
+                "p_std": 25.0,
+                "mean": 25.116,
+                "dev": 0.116,
+                "h_f": 0.066,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.01905,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29045,
+                "U": 0.5809,
+                "pass": false,
+                "m_vals": {
+                    "M1": 25.043,
+                    "M2": 25.109,
+                    "M3": 25.083,
+                    "M4": 25.149,
+                    "M5": 25.123,
+                    "M6": 25.189
+                },
+                "master_vals": {
+                    "M1": 25.0,
+                    "M2": 25.0,
+                    "M3": 25.0,
+                    "M4": 25.0,
+                    "M5": 25.0,
+                    "M6": 25.0
+                },
+                "m1": 25.043,
+                "m2": 25.109,
+                "m3": 25.083,
+                "m4": 25.149,
+                "m5": 25.123,
+                "m6": 25.189
+            },
+            {
+                "pct": 25.0,
+                "nom_ideal": 50.0,
+                "p_std": 50.0,
+                "mean": 50.1725,
+                "dev": 0.1725,
+                "h_f": 0.105,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03031,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29141,
+                "U": 0.5828,
+                "pass": false,
+                "m_vals": {
+                    "M1": 50.08,
+                    "M2": 50.185,
+                    "M3": 50.12,
+                    "M4": 50.225,
+                    "M5": 50.16,
+                    "M6": 50.265
+                },
+                "master_vals": {
+                    "M1": 50.0,
+                    "M2": 50.0,
+                    "M3": 50.0,
+                    "M4": 50.0,
+                    "M5": 50.0,
+                    "M6": 50.0
+                },
+                "m1": 50.08,
+                "m2": 50.185,
+                "m3": 50.12,
+                "m4": 50.225,
+                "m5": 50.16,
+                "m6": 50.265
+            },
+            {
+                "pct": 37.5,
+                "nom_ideal": 75.0,
+                "p_std": 75.0,
+                "mean": 75.2105,
+                "dev": 0.2105,
+                "h_f": 0.131,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03782,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29228,
+                "U": 0.5846,
+                "pass": false,
+                "m_vals": {
+                    "M1": 75.105,
+                    "M2": 75.236,
+                    "M3": 75.145,
+                    "M4": 75.276,
+                    "M5": 75.185,
+                    "M6": 75.316
+                },
+                "master_vals": {
+                    "M1": 75.0,
+                    "M2": 75.0,
+                    "M3": 75.0,
+                    "M4": 75.0,
+                    "M5": 75.0,
+                    "M6": 75.0
+                },
+                "m1": 75.105,
+                "m2": 75.236,
+                "m3": 75.145,
+                "m4": 75.276,
+                "m5": 75.185,
+                "m6": 75.316
+            },
+            {
+                "pct": 50.0,
+                "nom_ideal": 100.0,
+                "p_std": 100.0,
+                "mean": 100.227,
+                "dev": 0.227,
+                "h_f": 0.14,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.04042,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29263,
+                "U": 0.5853,
+                "pass": false,
+                "m_vals": {
+                    "M1": 100.117,
+                    "M2": 100.257,
+                    "M3": 100.157,
+                    "M4": 100.297,
+                    "M5": 100.197,
+                    "M6": 100.337
+                },
+                "master_vals": {
+                    "M1": 100.0,
+                    "M2": 100.0,
+                    "M3": 100.0,
+                    "M4": 100.0,
+                    "M5": 100.0,
+                    "M6": 100.0
+                },
+                "m1": 100.117,
+                "m2": 100.257,
+                "m3": 100.157,
+                "m4": 100.297,
+                "m5": 100.197,
+                "m6": 100.337
+            },
+            {
+                "pct": 62.5,
+                "nom_ideal": 125.0,
+                "p_std": 125.0,
+                "mean": 125.2185,
+                "dev": 0.2185,
+                "h_f": 0.131,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03782,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29228,
+                "U": 0.5846,
+                "pass": false,
+                "m_vals": {
+                    "M1": 125.113,
+                    "M2": 125.244,
+                    "M3": 125.153,
+                    "M4": 125.284,
+                    "M5": 125.193,
+                    "M6": 125.324
+                },
+                "master_vals": {
+                    "M1": 125.0,
+                    "M2": 125.0,
+                    "M3": 125.0,
+                    "M4": 125.0,
+                    "M5": 125.0,
+                    "M6": 125.0
+                },
+                "m1": 125.113,
+                "m2": 125.244,
+                "m3": 125.153,
+                "m4": 125.284,
+                "m5": 125.193,
+                "m6": 125.324
+            },
+            {
+                "pct": 75.0,
+                "nom_ideal": 150.0,
+                "p_std": 150.0,
+                "mean": 150.1885,
+                "dev": 0.1885,
+                "h_f": 0.105,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.03031,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29141,
+                "U": 0.5828,
+                "pass": false,
+                "m_vals": {
+                    "M1": 150.096,
+                    "M2": 150.201,
+                    "M3": 150.136,
+                    "M4": 150.241,
+                    "M5": 150.176,
+                    "M6": 150.281
+                },
+                "master_vals": {
+                    "M1": 150.0,
+                    "M2": 150.0,
+                    "M3": 150.0,
+                    "M4": 150.0,
+                    "M5": 150.0,
+                    "M6": 150.0
+                },
+                "m1": 150.096,
+                "m2": 150.201,
+                "m3": 150.136,
+                "m4": 150.241,
+                "m5": 150.176,
+                "m6": 150.281
+            },
+            {
+                "pct": 87.5,
+                "nom_ideal": 175.0,
+                "p_std": 175.0,
+                "mean": 175.14,
+                "dev": 0.14,
+                "h_f": 0.066,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.01905,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.29045,
+                "U": 0.5809,
+                "pass": false,
+                "m_vals": {
+                    "M1": 175.067,
+                    "M2": 175.133,
+                    "M3": 175.107,
+                    "M4": 175.173,
+                    "M5": 175.147,
+                    "M6": 175.213
+                },
+                "master_vals": {
+                    "M1": 175.0,
+                    "M2": 175.0,
+                    "M3": 175.0,
+                    "M4": 175.0,
+                    "M5": 175.0,
+                    "M6": 175.0
+                },
+                "m1": 175.067,
+                "m2": 175.133,
+                "m3": 175.107,
+                "m4": 175.173,
+                "m5": 175.147,
+                "m6": 175.213
+            },
+            {
+                "pct": 100.0,
+                "nom_ideal": 200.0,
+                "p_std": 200.0,
+                "mean": 200.083,
+                "dev": 0.083,
+                "h_f": 0.02,
+                "b_prime_f": 0.04,
+                "b_f": 0.06,
+                "u_h": 0.00577,
+                "u_b_prime": 0.01155,
+                "u_b": 0.01732,
+                "u_c": 0.28988,
+                "U": 0.5798,
+                "pass": false,
+                "m_vals": {
+                    "M1": 200.033,
+                    "M2": 200.053,
+                    "M3": 200.073,
+                    "M4": 200.093,
+                    "M5": 200.113,
+                    "M6": 200.133
+                },
+                "master_vals": {
+                    "M1": 200.0,
+                    "M2": 200.0,
+                    "M3": 200.0,
+                    "M4": 200.0,
+                    "M5": 200.0,
+                    "M6": 200.0
+                },
+                "m1": 200.033,
+                "m2": 200.053,
+                "m3": 200.073,
+                "m4": 200.093,
+                "m5": 200.113,
+                "m6": 200.133
+            }
+        ],
+        "preloadData": [
+            {
+                "cycle": 1,
+                "round": 1,
+                "reading_max": 200.0,
+                "reading_zero": 0.0
+            },
+            {
+                "cycle": 2,
+                "round": 1,
+                "reading_max": 200.0,
+                "reading_zero": 0.0
+            }
+        ],
+        "session_trend_log": [
+            {
+                "ts": 1700000000000,
+                "timeStr": "00:00",
+                "temp": 24.0,
+                "hum": 55.4,
+                "press": 1016.0
+            },
+            {
+                "ts": 1700000120000,
+                "timeStr": "02:00",
+                "temp": 24.1,
+                "hum": 55.4,
+                "press": 1016.1
+            },
+            {
+                "ts": 1700000240000,
+                "timeStr": "04:00",
+                "temp": 24.1,
+                "hum": 55.3,
+                "press": 1016.1
+            },
+            {
+                "ts": 1700000360000,
+                "timeStr": "06:00",
+                "temp": 24.1,
+                "hum": 55.1,
+                "press": 1016.2
+            },
+            {
+                "ts": 1700000480000,
+                "timeStr": "08:00",
+                "temp": 24.1,
+                "hum": 55.0,
+                "press": 1016.2
+            },
+            {
+                "ts": 1700000600000,
+                "timeStr": "10:00",
+                "temp": 24.1,
+                "hum": 54.8,
+                "press": 1016.2
+            },
+            {
+                "ts": 1700000720000,
+                "timeStr": "12:00",
+                "temp": 24.0,
+                "hum": 54.7,
+                "press": 1016.2
+            },
+            {
+                "ts": 1700000840000,
+                "timeStr": "14:00",
+                "temp": 23.9,
+                "hum": 54.6,
+                "press": 1016.2
+            },
+            {
+                "ts": 1700000960000,
+                "timeStr": "16:00",
+                "temp": 23.9,
+                "hum": 54.6,
+                "press": 1016.1
+            },
+            {
+                "ts": 1700001080000,
+                "timeStr": "18:00",
+                "temp": 23.9,
+                "hum": 54.6,
+                "press": 1016.1
+            },
+            {
+                "ts": 1700001200000,
+                "timeStr": "20:00",
+                "temp": 23.9,
+                "hum": 54.7,
+                "press": 1016.0
+            },
+            {
+                "ts": 1700001320000,
+                "timeStr": "22:00",
+                "temp": 23.9,
+                "hum": 54.9,
+                "press": 1016.0
+            }
+        ]
+    },
+    "session_trend_log": [
+        {
+            "ts": 1700000000000,
+            "timeStr": "00:00",
+            "temp": 24.0,
+            "hum": 55.4,
+            "press": 1016.0
+        },
+        {
+            "ts": 1700000120000,
+            "timeStr": "02:00",
+            "temp": 24.1,
+            "hum": 55.4,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000240000,
+            "timeStr": "04:00",
+            "temp": 24.1,
+            "hum": 55.3,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000360000,
+            "timeStr": "06:00",
+            "temp": 24.1,
+            "hum": 55.1,
+            "press": 1016.2
+        },
+        {
+            "ts": 1700000480000,
+            "timeStr": "08:00",
+            "temp": 24.1,
+            "hum": 55.0,
+            "press": 1016.2
+        },
+        {
+            "ts": 1700000600000,
+            "timeStr": "10:00",
+            "temp": 24.1,
+            "hum": 54.8,
+            "press": 1016.2
+        },
+        {
+            "ts": 1700000720000,
+            "timeStr": "12:00",
+            "temp": 24.0,
+            "hum": 54.7,
+            "press": 1016.2
+        },
+        {
+            "ts": 1700000840000,
+            "timeStr": "14:00",
+            "temp": 23.9,
+            "hum": 54.6,
+            "press": 1016.2
+        },
+        {
+            "ts": 1700000960000,
+            "timeStr": "16:00",
+            "temp": 23.9,
+            "hum": 54.6,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700001080000,
+            "timeStr": "18:00",
+            "temp": 23.9,
+            "hum": 54.6,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700001200000,
+            "timeStr": "20:00",
+            "temp": 23.9,
+            "hum": 54.7,
+            "press": 1016.0
+        },
+        {
+            "ts": 1700001320000,
+            "timeStr": "22:00",
+            "temp": 23.9,
+            "hum": 54.9,
+            "press": 1016.0
+        }
+    ]
+}

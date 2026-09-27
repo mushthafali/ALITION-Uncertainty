@@ -1,0 +1,11 @@
+pywebview
+numpy
+scipy
+matplotlib
+pandas
+reportlab
+pydantic
+openpyxl
+pytest
+requests
+pypdf

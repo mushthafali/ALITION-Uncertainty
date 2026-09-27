@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alition</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        window.onerror = function(msg, url, line, col, error) {
+            console.error('Alition JS Error:', msg, 'at line', line, 'col', col, error);
+            return false;
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="in-startup">
+
+<!-- ── STARTUP ────────────────────────────────── -->
+<div id="startupOverlay" class="overlay active">
+    <div class="startup-dialog pywebview-no-drag">
+        <div class="startup-brand" onmousedown="handleRibbonDrag(event)" style="cursor: move;">
+            <img src="img/logo.png" onerror="this.onerror=null; this.src='../../../img/logo.png';" alt="Alition" class="brand-logo-img">
+            <div>
+                <h1>Alition</h1>
+                <span>AUTOMATIC CALIBRATION CALCULATIONS</span>
+            </div>
+        </div>
+        <div class="startup-form">
+            <div class="field-row">
+                <div class="field">
+                    <label data-hint="Person responsible for conducting the calibration.">Operator Name <span class="req">*</span></label>
+                    <input type="text" id="metaOperator" placeholder="e.g. Technician name">
+                </div>
+                <div class="field">
+                    <label data-hint="Model or type of the instrument being calibrated.">Instrument Model <span class="req">*</span></label>
+                    <input type="text" id="metaModel" placeholder="e.g. Pressure Gauge">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label data-hint="Manufacturer instrument serial number.">Serial Number <span class="req">*</span></label>
+                    <input type="text" id="metaSerial" placeholder="e.g. SN-001">
+                </div>
+                <div class="field">
+                    <label data-hint="Field or P&amp;ID instrument identification tag number.">Tag Number <span class="req">*</span></label>
+                    <input type="text" id="metaTag" placeholder="e.g. PT-101">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label data-hint="Date of calibration execution.">Calibration Date <span class="req">*</span></label>
+                    <input type="date" id="metaDate">
+                </div>
+                <div class="field">
+                    <label data-hint="Physical location or plant area where the instrument is located.">Plant / Location <span class="req">*</span></label>
+                    <input type="text" id="metaLocation" placeholder="e.g. Calibration Lab">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field span2">
+                    <label data-hint="Select the calibration standard procedure for this session.">Calibration Standard <span class="req">*</span></label>
+                    <div class="custom-select startup-cal-select" id="calStandardSelect">
+                        <button class="cs-trigger" type="button" onclick="toggleCalStandardDropdown(event)">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            <span id="calStandardLabel">DKD-R 6-1 - Calibration of Pressure Gauges</span>
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="cs-dropdown" id="calStandardDropdown">
+                            <button class="cs-opt cs-opt-active" type="button" onclick="setCalStandard('DKD-R 6-1','DKD-R 6-1 - Calibration of Pressure Gauges',this)">DKD-R 6-1 - Calibration of Pressure Gauges</button>
+                        </div>
+                    </div>
+                    <input type="hidden" id="metaCalStandard" value="DKD-R 6-1">
+                </div>
+            </div>
+        </div>
+        <div class="startup-actions">
+            <div style="display: flex; gap: 8px;">
+                <button class="ghost-btn pywebview-no-drag" type="button" onclick="openHistoryDialog()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                    View History
+                </button>
+                <button class="ghost-btn pywebview-no-drag" type="button" onclick="importHistory()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    Import Data
+                </button>
+            </div>
+            <button class="primary-btn pywebview-no-drag" id="btnStartSession" type="button" onclick="startCalibration()">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Start Session
+            </button>
+        </div>
+        <p class="startup-hint">Fields marked with <span class="req">*</span> are required to begin calibration.</p>
+    </div>
+</div>
+
+<!-- ── EDIT IDENTITY MODAL ───────────────────────── -->
+<div id="editIdentityOverlay" class="overlay">
+    <div class="startup-dialog pywebview-no-drag" style="max-width: 540px;">
+        <div class="dialog-header" style="padding: 18px 24px; border-bottom: 1px solid rgba(166,173,185,0.20);">
+            <div>
+                <h2 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin: 0;">Edit Identity Details</h2>
+                <p style="font-size: 12px; color: var(--text-muted); margin: 4px 0 0 0;">Update operator and instrument metadata for the active session</p>
+            </div>
+            <button class="icon-btn" onclick="closeEditIdentityModal()" type="button" title="Close">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="startup-form" style="padding: 18px 24px 0 24px;">
+            <div class="field-row">
+                <div class="field">
+                    <label>Operator Name <span class="req">*</span></label>
+                    <input type="text" id="editMetaOperator" placeholder="Technician name">
+                </div>
+                <div class="field">
+                    <label>Instrument Model <span class="req">*</span></label>
+                    <input type="text" id="editMetaModel" placeholder="e.g. Pressure Gauge">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label>Serial Number <span class="req">*</span></label>
+                    <input type="text" id="editMetaSerial" placeholder="e.g. SN-001">
+                </div>
+                <div class="field">
+                    <label>Tag Number <span class="req">*</span></label>
+                    <input type="text" id="editMetaTag" placeholder="e.g. PT-101">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label>Calibration Date <span class="req">*</span></label>
+                    <input type="date" id="editMetaDate">
+                </div>
+                <div class="field">
+                    <label>Plant / Location <span class="req">*</span></label>
+                    <input type="text" id="editMetaLocation" placeholder="e.g. Calibration Lab">
+                </div>
+            </div>
+        </div>
+        <div class="startup-actions" style="margin-top: 18px; padding: 0 24px 22px 24px; display: flex; justify-content: flex-end; gap: 10px;">
+            <button class="ghost-btn pywebview-no-drag" type="button" onclick="closeEditIdentityModal()">Cancel</button>
+            <button class="primary-btn pywebview-no-drag" type="button" onclick="saveEditedIdentity()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Save Changes
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ── HISTORY ────────────────────────────────── -->
+<div id="historyOverlay" class="overlay">
+    <div class="history-dialog" style="max-width: 1360px; width: 95vw; height: 90vh;">
+        <div class="dialog-header">
+            <div>
+                <h2>Session & Instrument History</h2>
+                <p>Calibration records & lifecycle tracking by instrument serial number</p>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <button class="ghost-btn" onclick="importHistory()" style="font-size:12px; height:32px; padding:0 12px; display:flex; align-items:center; gap:6px;" title="Import session or instrument package">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Import Data
+                </button>
+                <button class="icon-btn" onclick="closeHistoryDialog()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- History Main Navigation Tabs -->
+        <div class="history-tabbar">
+            <button class="htab active" id="htabBtn_instruments" onclick="switchHistoryTab('instruments')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <span>By Instrument / Serial Number</span>
+                <span class="htab-badge" id="htabCount_instruments">0</span>
+            </button>
+            <button class="htab" id="htabBtn_sessions" onclick="switchHistoryTab('sessions')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                <span>All Calibration Sessions</span>
+                <span class="htab-badge" id="htabCount_sessions">0</span>
+            </button>
+        </div>
+
+        <!-- Tab 1: By Instrument -->
+        <div class="htab-panel active" id="htab_panel_instruments">
+            <div class="history-toolbar">
+                <div class="history-search-wrap" style="flex: 1;">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="instrumentSearch" placeholder="Search serial number, model, tag, or operator..." oninput="applyInstrumentFilter()">
+                </div>
+            </div>
+            <div class="history-table-wrap">
+                <table id="instrumentTable" class="modern-table">
+                    <thead><tr>
+                        <th style="width: 36px; text-align: center;"></th>
+                        <th>Serial Number & Tag</th>
+                        <th>Instrument Model</th>
+                        <th style="text-align:center">Range & MPE</th>
+                        <th style="text-align:center; width: 95px;">Sequence</th>
+                        <th style="text-align:center">Calibration Activities</th>
+                        <th style="text-align:center">Latest Status</th>
+                        <th>Last Calibrated</th>
+                        <th style="text-align:center; width: 105px;"></th>
+                    </tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab 2: All Sessions -->
+        <div class="htab-panel" id="htab_panel_sessions">
+            <div class="history-toolbar">
+                <div class="history-search-wrap">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="text" id="historySearch" placeholder="Search date, serial number, model, or operator..." oninput="applyHistoryFilter()">
+                </div>
+                <div class="custom-select" id="historySortSelect">
+                    <button class="cs-trigger" onclick="toggleSortDropdown(event)" type="button">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                        <span id="historySortLabel">Date: Newest First</span>
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="cs-dropdown" id="historySortDropdown">
+                        <button class="cs-opt cs-opt-active" onclick="setSortOption('date_desc','Date: Newest First',this)">Date: Newest First</button>
+                        <button class="cs-opt" onclick="setSortOption('date_asc','Date: Oldest First',this)">Date: Oldest First</button>
+                        <button class="cs-opt" onclick="setSortOption('name_asc','Operator: A - Z',this)">Operator: A - Z</button>
+                        <button class="cs-opt" onclick="setSortOption('name_desc','Operator: Z - A',this)">Operator: Z - A</button>
+                        <button class="cs-opt" onclick="setSortOption('instrument_asc','Model: A - Z',this)">Model: A - Z</button>
+                        <button class="cs-opt" onclick="setSortOption('location_asc','Location: A - Z',this)">Location: A - Z</button>
+                    </div>
+                </div>
+                <button id="compareBtn" class="compare-btn" onclick="openCompareModal()" disabled>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                    <span id="compareBtnLabel">Compare (0/2)</span>
+                </button>
+            </div>
+            <div class="history-table-wrap">
+                <table id="historyTable" class="modern-table">
+                    <thead><tr>
+                        <th class="col-chk" style="width: 36px; text-align: center;"></th>
+                        <th>Serial Number & Tag</th>
+                        <th>Instrument Model</th>
+                        <th style="text-align:center; width: 95px;">Sequence</th>
+                        <th style="text-align:center">Standard</th>
+                        <th>Operator & Location</th>
+                        <th>Calibration Time</th>
+                        <th style="text-align:center">Status</th>
+                        <th style="text-align:center; width: 105px;"></th>
+                    </tr></thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── RECALIBRATE CONFIRMATION MODAL ──────────────── -->
+<div id="recalibrateOverlay" class="overlay" style="z-index: 9995;">
+    <div class="confirm-dialog" style="max-width: 500px; text-align: left;">
+        <div class="dialog-header" style="padding: 0 0 14px 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: flex-start;">
+            <div>
+                <h3 style="font-size: 17px; margin: 0 0 4px 0; color: var(--text-primary); font-weight: 700;">Instrument Recalibration</h3>
+                <span style="font-size: 12px; color: var(--text-secondary);">Prepare a new calibration session with locked instrument specifications</span>
+            </div>
+            <button class="icon-btn" onclick="closeRecalibrateModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        
+        <div class="recal-specs-box" id="recalSpecsBox" style="margin: 16px 0; padding: 12px 14px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+            <!-- Populated dynamically: Serial Number, Model, Tag, Range, MPE, Standard -->
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+            <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px;">Operator / Technician Name</label>
+                <input type="text" id="recalOperator" class="input-base" style="width: 100%; box-sizing: border-box;" placeholder="Technician Name">
+            </div>
+            <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px;">Testing Location</label>
+                <input type="text" id="recalLocation" class="input-base" style="width: 100%; box-sizing: border-box;" placeholder="Lab / Plant Location">
+            </div>
+            <div>
+                <label style="display: block; font-size: 12px; font-weight: 600; color: #475569; margin-bottom: 4px;">Calibration Date</label>
+                <input type="date" id="recalDate" class="input-base" style="width: 100%; box-sizing: border-box;">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button class="ghost-btn" onclick="closeRecalibrateModal()">Cancel</button>
+            <button class="primary-btn" id="btnStartRecalibration" onclick="confirmStartRecalibration()" style="background: #2563eb; color: white;">
+                Start Recalibration
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ── INSTRUMENT DRIFT & LIFECYCLE DASHBOARD ──────────────── -->
+<div id="instrumentDriftOverlay" class="overlay" style="z-index: 9990;">
+    <div class="compare-dialog" style="max-width: 1360px; width: 95vw; height: 90vh;">
+        <div class="compare-header">
+            <div>
+                <h2 id="driftModalTitle">Complete Instrument Calibration Records & History</h2>
+                <div id="driftModalSubtitle" style="font-size: 12px; color: var(--text-secondary); margin-top: 2px;"></div>
+            </div>
+            <div class="compare-header-actions">
+                <button class="btn-action-primary" id="btnDriftRecalibrate" onclick="if (activeDriftInstrument) openRecalibrateModal(activeDriftInstrument.serial_number);" title="Start new calibration session for this instrument">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    <span>Recalibrate</span>
+                </button>
+                <button class="cmp-export-btn" id="btnExportInstrumentBundle" onclick="exportCurrentInstrumentBundle()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export Instrument Records
+                </button>
+                <button class="icon-btn" onclick="closeInstrumentDriftModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Metrics Summary Ribbon -->
+        <div class="drift-metrics-ribbon" id="driftMetricsRibbon">
+            <!-- Populated dynamically -->
+        </div>
+
+        <div class="compare-tabbar">
+            <button class="ctab active" id="dtabBtn_sessionsTable" onclick="switchDriftTab('sessionsTable')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                Measurement Tables per Calibration
+            </button>
+            <button class="ctab" id="dtabBtn_matrixTable" onclick="switchDriftTab('matrixTable')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12H3M12 3v18M3 3l18 18"/></svg>
+                Cross-Calibration Drift Matrix
+            </button>
+            <button class="ctab" id="dtabBtn_charts" onclick="switchDriftTab('charts')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Trend Charts & Drift Analysis
+            </button>
+            <button class="ctab" id="dtabBtn_timeline" onclick="switchDriftTab('timeline')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Session Logs & Metadata
+            </button>
+        </div>
+
+        <div class="compare-body" style="padding: 18px 24px; overflow-y: scroll; scrollbar-gutter: stable;">
+            <!-- Tab 1: Full Measurement Tables per Calibration Activity -->
+            <div class="ctab-panel active" id="dtab_sessionsTable">
+                <div id="driftSessionsTableContent"></div>
+            </div>
+
+            <!-- Tab 2: Cross-Calibration Comparison Matrix Table -->
+            <div class="ctab-panel" id="dtab_matrixTable">
+                <div id="driftMatrixTableContent"></div>
+            </div>
+
+            <!-- Tab 3: Visual Charts -->
+            <div class="ctab-panel" id="dtab_charts">
+                <div class="cmp-chart-card" style="height: 340px; margin-bottom: 16px;">
+                    <div class="cmp-chart-title">Error Shift over Time (Error Drift Trendline)</div>
+                    <canvas id="chartErrorDrift"></canvas>
+                </div>
+                <div class="cmp-charts-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="cmp-chart-card" style="height: 300px;">
+                        <div class="cmp-chart-title">Zero Point Shift (Zero Shift)</div>
+                        <canvas id="chartZeroDrift"></canvas>
+                    </div>
+                    <div class="cmp-chart-card" style="height: 300px;">
+                        <div class="cmp-chart-title">Max Uncertainty (Max U) & Hysteresis Trend</div>
+                        <canvas id="chartUncertaintyDrift"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 4: Timeline & Log -->
+            <div class="ctab-panel" id="dtab_timeline">
+                <div id="driftTimelineContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ── COMPARE MODAL ─────────────────────────── -->
+<div id="compareOverlay" class="overlay">
+    <div class="compare-dialog">
+        <div class="compare-header">
+            <div><h2>Calibration Comparison</h2></div>
+            <div class="compare-header-actions">
+                <button class="cmp-export-btn" id="cmpExportBtn" onclick="exportCompareReport()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export PDF
+                </button>
+                <button class="icon-btn" onclick="closeCompareModal()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class="compare-tabbar">
+            <button class="ctab active" id="ctabBtn_overview" onclick="switchCompareTab('overview')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Overview
+            </button>
+            <button class="ctab" id="ctabBtn_charts" onclick="switchCompareTab('charts')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Charts
+            </button>
+            <button class="ctab" id="ctabBtn_points" onclick="switchCompareTab('points')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+                Point Details
+            </button>
+        </div>
+        <div class="compare-body">
+            <div class="ctab-panel active" id="ctab_overview">
+                <div id="compareOverviewContent"></div>
+            </div>
+            <div class="ctab-panel" id="ctab_charts">
+                <div class="cmp-charts-grid">
+                    <div class="cmp-chart-card"><div class="cmp-chart-title">Calibration Curve</div><canvas id="cmpCalChart"></canvas></div>
+                    <div class="cmp-chart-card"><div class="cmp-chart-title">Error Analysis (%FS)</div><canvas id="cmpErrChart"></canvas></div>
+                </div>
+                <div class="cmp-charts-grid" style="margin-top:16px">
+                    <div class="cmp-chart-card"><div class="cmp-chart-title">Linearity Residuals</div><canvas id="cmpResChart"></canvas></div>
+                    <div class="cmp-chart-card" id="cmpLegendCard"><div class="cmp-chart-title">Legend</div><div class="cmp-legend" id="cmpLegendContent"></div></div>
+                </div>
+            </div>
+            <div class="ctab-panel" id="ctab_points">
+                <div id="comparePointsContent"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── PDF PREVIEW MODAL ─────────────────────────── -->
+<div id="pdfPreviewOverlay" class="overlay" style="z-index: 9998;">
+    <div class="pdf-preview-dialog pywebview-no-drag">
+        <div class="pdf-preview-header">
+            <div class="pdf-preview-title-wrap">
+                <h2>Certificate Preview</h2>
+                <span class="pdf-preview-sub">DKD-R 6-1 Calibration Certificate</span>
+            </div>
+            <div class="pdf-preview-meta-controls">
+                <label class="pdf-cert-lbl" for="pdfPreviewCertNo">Certificate No:</label>
+                <input type="text" id="pdfPreviewCertNo" class="pdf-cert-input" placeholder="ALT/CAL/YYYY/MM/NNNN">
+                <button class="ghost-btn pdf-refresh-btn" type="button" onclick="refreshPdfPreview()" title="Refresh preview with updated number">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+                    Update
+                </button>
+            </div>
+            <div class="pdf-preview-actions">
+                <button class="ghost-btn pywebview-no-drag" type="button" onclick="closePdfPreviewModal()">
+                    Close
+                </button>
+                <button class="primary-btn pywebview-no-drag" id="btnDownloadFromPreview" type="button" onclick="downloadPdfFromPreview()">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Save / Download PDF
+                </button>
+            </div>
+        </div>
+        <div class="pdf-preview-body">
+            <div id="pdfPreviewLoading" class="pdf-preview-loading" style="display: none;">
+                <div class="pdf-spinner"></div>
+                <span>Compiling Certificate Preview...</span>
+            </div>
+            <iframe id="pdfPreviewFrame" class="pdf-preview-frame" src="about:blank"></iframe>
+        </div>
+    </div>
+</div>
+
+<!-- ── GLOBAL CONFIRM DIALOG ────────────────────────── -->
+<div id="confirmOverlay" class="overlay" style="z-index: 9999;">
+    <div class="confirm-dialog" style="max-width: 420px;">
+        <div class="confirm-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3 id="confirmTitle" style="font-size: 18px; color: var(--text-primary); margin-bottom: 8px;">Confirm Action</h3>
+        <p id="confirmMessage" style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px; font-size: 14px;">Are you sure?</p>
+        <div class="confirm-actions" style="display: flex; gap: 12px; justify-content: center;">
+            <button class="ghost-btn" id="confirmCancelBtn" onclick="closeConfirm()">Cancel</button>
+            <button class="danger-btn" id="confirmOkBtn" onclick="executeConfirmAction()">Continue</button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     APP SHELL - TABBED LAYOUT
+═══════════════════════════════════════════════ -->
+<div class="app-shell">
+
+    <!-- ── RIBBON ─────────────────────────────── -->
+    <nav class="ribbon" onmousedown="handleRibbonDrag(event)">
+        <div class="ribbon-logo pywebview-drag-region" style="cursor: move;">
+            <img src="img/logo.png" onerror="this.onerror=null; this.src='../../../img/logo.png';" alt="Alition" class="ribbon-logo-img">
+            <span class="ribbon-logo-title">Alition</span>
+        </div>
+
+        <div class="ribbon-sep"></div>
+
+        <div class="ribbon-group">
+            <span class="rg-label">Session</span>
+            <div class="rg-btns">
+                <button class="rb" onclick="promptNewSession()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    New Session
+                </button>
+                <button class="rb" onclick="openHistoryDialog()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+                    History
+                </button>
+            </div>
+        </div>
+
+        <div class="ribbon-sep"></div>
+
+        <div class="ribbon-group">
+            <span class="rg-label">Data</span>
+            <div class="rg-btns">
+                <button class="rb" onclick="importHistory()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    Import Session
+                </button>
+                <button class="rb" id="btnExportSession" onclick="ribbonExportSession()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export Session
+                </button>
+            </div>
+        </div>
+
+        <div class="ribbon-sep"></div>
+
+        <div class="ribbon-group">
+            <span class="rg-label">Export</span>
+            <div class="rg-btns">
+                <button class="rb" id="btnSaveData" onclick="ribbonSaveData()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                    Save Data
+                </button>
+                <button class="rb" id="btnSaveAsNew" onclick="ribbonSaveAsNew()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg>
+                    Save as New
+                </button>
+                <button class="rb" id="btnExportExcel" onclick="ribbonExportExcel()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+                    Export Excel
+                </button>
+                <button class="rb accent" id="btnExportPdf" onclick="ribbonExportPdf()" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+
+        <div style="flex:1; align-self:stretch; height:100%; min-width:30px; cursor:move;" class="pywebview-drag-region"></div>
+
+        <div class="ribbon-sep"></div>
+        <div class="ribbon-group" id="viewRibbonGroup">
+            <div class="rg-btns">
+                <div class="conn-ribbon-wrap" style="display: flex; align-items: center;">
+                    <div style="display: flex;">
+                        <button class="rb" id="btnConnect" onclick="openConnectDialog()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                            Hardware
+                        </button>
+                    </div>
+                    <div class="mqtt-status-badge" id="mqttStatusBadge" style="margin-left: 8px;">
+                        <span class="mqtt-status-dot" id="mqttStatusDot"></span>
+                        <span id="mqttStatusText">Offline</span>
+                    </div>
+                </div>
+                <button class="rb" id="hintToggleBtn" onclick="toggleHints()">
+                    <span class="hint-icon-badge">?</span>
+                    Hints
+                </button>
+            </div>
+        </div>
+
+
+        <div class="ribbon-sep"></div>
+
+        <!-- ── WINDOW CONTROLS ────────────────── -->
+        <div class="ctb-controls pywebview-no-drag">
+            <button class="ctb-btn pywebview-no-drag" onclick="if (window.pywebview && window.pywebview.api) pywebview.api.minimize_window();" title="Minimize">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="12" x2="20" y2="12"/></svg>
+            </button>
+            <button class="ctb-btn pywebview-no-drag" onclick="if (window.pywebview && window.pywebview.api) pywebview.api.maximize_window();" title="Maximize">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+            </button>
+            <button class="ctb-btn close-btn pywebview-no-drag" onclick="confirmCloseApp()" title="Close">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── SESSION CONTEXT HEADER ─────────────── -->
+    <div class="session-context-header" id="sessionContextHeader" onmousedown="handleRibbonDrag(event)" style="cursor: move;">
+        <div style="display:flex; align-items:center; gap:20px;">
+            <div class="session-title-area">
+                <div class="sc-seq-hero-badge" id="scSeqBadge">SEQUENCE -</div>
+            </div>
+            <div class="session-meta-strip">
+                <div class="meta-item">
+                    <span class="meta-lbl">Operator</span>
+                    <span class="meta-val" id="infoOperator">-</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-lbl">Instrument</span>
+                    <span class="meta-val" id="infoModel">-</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-lbl">Tag No</span>
+                    <span class="meta-val" id="infoTag">-</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-lbl">Serial No</span>
+                    <span class="meta-val" id="infoSerial">-</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-lbl">Location</span>
+                    <span class="meta-val" id="infoLocation">-</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-lbl">Date</span>
+                    <span class="meta-val" id="infoDate">-</span>
+                </div>
+                <button class="meta-edit-btn" id="btnEditSessionMeta" type="button" onclick="openEditIdentityModal()" title="Edit Operator &amp; Instrument Details">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    <span>Edit</span>
+                </button>
+            </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+            <div id="statusBadge" class="status-badge hidden">-</div>
+        </div>
+    </div>
+
+    <!-- ── PILL TAB BAR ──────────────────────── -->
+    <div class="pill-tab-bar" id="mainTabBar">
+        <button class="pill-tab active" id="pillTab_input" onclick="switchMainTab('input')">
+            <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            User's Input
+        </button>
+        <button class="pill-tab disabled" id="pillTab_table" onclick="switchMainTab('table')">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            Staircase Table
+        </button>
+        <button class="pill-tab disabled" id="pillTab_graph" onclick="switchMainTab('graph')">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Staircase Graph
+        </button>
+        <button class="pill-tab disabled" id="pillTab_stats" onclick="switchMainTab('stats')">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            Statistics
+        </button>
+        <button class="pill-tab disabled" id="pillTab_uncert" onclick="switchMainTab('uncert')">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Uncertainty
+        </button>
+        <button class="pill-tab" id="pillTab_ambien" onclick="switchMainTab('ambien')">
+            <svg viewBox="0 0 24 24"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+            Ambient Monitor
+        </button>
+        <button class="pill-tab disabled" id="pillTab_summary" onclick="switchMainTab('summary')">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Summary
+        </button>
+    </div>
+
+    <!-- ── TAB CONTENT AREA ──────────────────── -->
+    <div class="tab-workspace">
+
+        <!-- ═══ TAB 1: USER'S INPUT ═══ -->
+        <div class="tab-pane active" id="pane_input" style="padding: 0;">
+            <div class="studio-layout input-layout-grid">
+
+                <!-- ── LEFT COLUMN: Configuration Studio ── -->
+                <div class="studio-config-pane">
+
+                    <!-- Section 1: UUT Specifications -->
+                    <div class="studio-section">
+                        <div class="studio-section-title">Unit Under Test (UUT) Specifications</div>
+                        <div class="studio-fields-stack">
+                            <!-- Row 1: Unit Selection -->
+                            <div class="studio-field">
+                                <label class="studio-field-lbl" data-hint="Base pressure unit of the unit under test.">Units <span class="req">*</span></label>
+                                <div class="custom-select" id="dkdUnitWrap">
+                                    <button class="cs-trigger" type="button" onclick="toggleCustomSelect('dkdUnitWrap', event)">
+                                        <span id="dkdUnitLabel">bar</span>
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="cs-dropdown" id="dkdUnitDropdown">
+                                        <button class="cs-opt cs-opt-active" type="button" onclick="setCustomSelect('dkdUnit', 'bar', 'bar', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">bar</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdUnit', 'psi', 'psi', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">psi</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdUnit', 'kPa', 'kPa', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">kPa</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdUnit', 'MPa', 'MPa', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">MPa</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdUnit', 'Pa', 'Pa', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">Pa</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdUnit', 'mbar', 'mbar', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">mbar</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdUnit', 'hPa', 'hPa', this, 'dkdUnitWrap'); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">hPa</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="dkdUnit" value="bar">
+                            </div>
+
+                            <!-- Row 2: LRV & URV -->
+                            <div class="studio-field-row">
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Lower Range Value (LRV) of measurement span.">Lower Range (LRV) <span class="req">*</span></label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" id="dkdLrv" value="0" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix live-unit-tag">bar</span>
+                                    </div>
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Upper Range Value (URV) of measurement span.">Upper Range (URV) <span class="req">*</span></label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" id="dkdUrv" value="100" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix live-unit-tag">bar</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Resolution & Tolerance (MPE %) -->
+                            <div class="studio-field-row">
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Smallest readable resolution of UUT display or scale.">Resolution <span class="req">*</span></label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" step="0.001" min="0" id="dkdRes" value="0.01" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix live-unit-tag">bar</span>
+                                    </div>
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Maximum permissible error (MPE %) from manufacturer specifications.">Tolerance / MPE (%) <span class="req">*</span></label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" step="0.01" min="0" id="dkdTol" value="0.5" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="studio-divider"></div>
+
+                    <!-- Section 2: Reference Standard & Environment -->
+                    <div class="studio-section">
+                        <div class="studio-section-title">Reference Standard &amp; Laboratory Setup</div>
+                        <div class="studio-fields-stack">
+                            <!-- Calibrator Type -->
+                            <div class="studio-field">
+                                <label class="studio-field-lbl" data-hint="Reference standard instrument type used for calibration.">Calibrator Standard Type <span class="req">*</span></label>
+                                <div class="custom-select" id="dkdCalTypeWrap">
+                                    <button class="cs-trigger" type="button" onclick="toggleCustomSelect('dkdCalTypeWrap', event)">
+                                        <span id="dkdCalTypeLabel">Digital Calibrator</span>
+                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="cs-dropdown" id="dkdCalTypeDropdown">
+                                        <button class="cs-opt cs-opt-active" type="button" onclick="setCustomSelect('dkdCalType', 'DIGITAL', 'Digital Calibrator', this, 'dkdCalTypeWrap'); toggleDkdCalType(); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">Digital Calibrator</button>
+                                        <button class="cs-opt" type="button" onclick="setCustomSelect('dkdCalType', 'DWT', 'Dead-Weight Tester', this, 'dkdCalTypeWrap'); toggleDkdCalType(); if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">Dead-Weight Tester (DWT)</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="dkdCalType" value="DIGITAL">
+                            </div>
+
+                            <!-- Digital Fields -->
+                            <div id="dkdDigitalFields" class="studio-field-row">
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Maximum full scale measurement limit of digital calibrator.">Standard Full Scale <span class="req">*</span></label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" id="dkdStdFs" value="100" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix live-unit-tag">bar</span>
+                                    </div>
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Accuracy percentage of standard from calibration certificate.">Standard Accuracy (%) <span class="req">*</span></label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" step="0.01" min="0" id="dkdStdAcc" value="0.025" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix">%</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- DWT Fields -->
+                            <div id="dkdDwtFields" class="studio-dwt-grid" style="display:none;">
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Standard uncertainty of DWT from certificate (k=2 divided by 2).">u_std Certificate <span class="req">*</span></label>
+                                    <input type="number" step="0.0001" min="0" id="dkdUstdDwt" value="0" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Effective thermal expansion coefficient of DWT piston and cylinder.">Thermal Coeff α+β (1/K)</label>
+                                    <input type="number" step="0.000001" min="0" id="dkdAlphaBeta" value="0" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Mass density of dead-weight material (typically stainless steel = 8000 kg/m³).">Mass Density ρ_m (kg/m³)</label>
+                                    <input type="number" step="1" min="0" id="dkdRhoM" value="8000" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Elastic pressure deformation coefficient of DWT cylinder.">Deformation Coeff λ (1/Pa)</label>
+                                    <input type="number" step="0.0000001" min="0" id="dkdLambda" value="0" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                </div>
+                            </div>
+
+                            <!-- Head Setup -->
+                            <div class="studio-field-row" style="margin-top: 4px;">
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Vertical height difference of UUT relative to standard (+ if UUT higher).">Height Difference Δh (m)</label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" step="0.01" id="dkdHDiff" value="0.0" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix">m</span>
+                                    </div>
+                                </div>
+                                <div class="studio-field">
+                                    <label class="studio-field-lbl" data-hint="Density of medium fluid in calibration line (air ~1.2 kg/m³, water ~1000 kg/m³, oil ~870 kg/m³).">Fluid Density ρ_f (kg/m³)</label>
+                                    <div class="studio-input-wrap">
+                                        <input type="number" step="0.01" min="0" id="dkdMedRho" value="1.2" oninput="if (typeof updateLiveMetrologyPreview === 'function') updateLiveMetrologyPreview();">
+                                        <span class="studio-unit-suffix">kg/m³</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Bar: Lock Sequence -->
+                    <div class="studio-action-bar">
+                        <button class="studio-lock-btn" id="dkdLockBtn" onclick="lockDkdSequence()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <span>Lock Calibration Sequence</span>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- ── RIGHT COLUMN: Live Metrology Studio Preview ── -->
+                <div class="studio-preview-pane">
+                    <div class="studio-preview-card">
+                        <div class="preview-header">
+                            <div>
+                                <span class="preview-eyebrow">METROLOGICAL PREVIEW</span>
+                                <div class="preview-seq-title" id="prevSeqTitle">Sequence B</div>
+                            </div>
+                            <span class="preview-status-pill" id="prevStatusTag">Ready to Lock</span>
+                        </div>
+
+                        <!-- Metrological KPI Grid -->
+                        <div class="preview-kpi-grid">
+                            <div class="preview-kpi-item">
+                                <span class="preview-kpi-lbl">Calibrated Span</span>
+                                <span class="preview-kpi-val" id="prevSpanVal">100.00 bar</span>
+                            </div>
+                            <div class="preview-kpi-item">
+                                <span class="preview-kpi-lbl">Tolerance Limit</span>
+                                <span class="preview-kpi-val" id="prevMpeVal">±0.500 bar (0.50%)</span>
+                            </div>
+                            <div class="preview-kpi-item">
+                                <span class="preview-kpi-lbl">Preloading</span>
+                                <span class="preview-kpi-val" id="prevPreloadVal">2× Cycles</span>
+                            </div>
+                            <div class="preview-kpi-item">
+                                <span class="preview-kpi-lbl">Series Count</span>
+                                <span class="preview-kpi-val" id="prevSeriesVal">3 Series</span>
+                            </div>
+                        </div>
+
+                        <!-- Staircase Ladder Preview Table -->
+                        <div class="preview-ladder-wrap">
+                            <div class="preview-ladder-header">
+                                <span class="ladder-title" id="prevLadderTitle">Measurement Points (9 Points)</span>
+                                <span class="ladder-step-info" id="prevStepInfo">Step: 12.5% Span</span>
+                            </div>
+                            <div class="preview-table-container">
+                                <table class="preview-points-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Target %</th>
+                                            <th>Nominal Pressure</th>
+                                            <th>Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="prevLadderBody">
+                                        <tr><td class="td-idx">1</td><td class="td-pct">0.0%</td><td class="td-nom"><strong>0.00</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-zero">Zero Point</span></td></tr>
+                                        <tr><td class="td-idx">2</td><td class="td-pct">12.5%</td><td class="td-nom"><strong>12.50</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">3</td><td class="td-pct">25.0%</td><td class="td-nom"><strong>25.00</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">4</td><td class="td-pct">37.5%</td><td class="td-nom"><strong>37.50</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">5</td><td class="td-pct">50.0%</td><td class="td-nom"><strong>50.00</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">6</td><td class="td-pct">62.5%</td><td class="td-nom"><strong>62.50</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">7</td><td class="td-pct">75.0%</td><td class="td-nom"><strong>75.00</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">8</td><td class="td-pct">87.5%</td><td class="td-nom"><strong>87.50</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-mid">Step</span></td></tr>
+                                        <tr><td class="td-idx">9</td><td class="td-pct">100.0%</td><td class="td-nom"><strong>100.00</strong> <span class="td-unit">bar</span></td><td><span class="step-type-pill tag-fs">Full Scale</span></td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div> <!-- End studio-layout / input-layout-grid -->
+        </div>
+
+        <!-- ═══ TAB 2: STAIRCASE TABLE ═══ -->
+        <div class="tab-pane" id="pane_table">
+
+            <!-- Sequence Info Badge Strip -->
+            <div class="seq-badge-strip" id="scBadgeStrip">
+                <div class="seq-badge-item">
+                    <span class="seq-badge-lbl">Sequence</span>
+                    <span class="seq-badge-val" id="scBadgeSeq">-</span>
+                </div>
+                <div class="seq-badge-item">
+                    <span class="seq-badge-lbl">MPE</span>
+                    <span class="seq-badge-val" id="scBadgeMpe">-</span>
+                </div>
+                <div class="seq-badge-item">
+                    <span class="seq-badge-lbl">u Standard</span>
+                    <span class="seq-badge-val" id="scBadgeUstd">-</span>
+                </div>
+                <div class="seq-badge-item">
+                    <span class="seq-badge-lbl">M-series</span>
+                    <span class="seq-badge-val" id="scBadgeMseries">-</span>
+                </div>
+                <div class="seq-badge-item">
+                    <span class="seq-badge-lbl">Preloading</span>
+                    <span class="seq-badge-val" id="scBadgePreload">-</span>
+                </div>
+                <div class="seq-badge-item">
+                    <span class="seq-badge-lbl">Points</span>
+                    <span class="seq-badge-val" id="scBadgePoints">-</span>
+                </div>
+                <button class="seq-badge-unlock-btn" id="scBadgeUnlockBtn" type="button" onclick="confirmUnlockDkdSequence()" title="Unlock and edit session parameters">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                    <span>Unlock Parameters</span>
+                </button>
+            </div>
+
+            <!-- Staircase Table Card -->
+            <div class="n-card" style="padding:0; overflow:hidden;">
+                <div class="n-card-header" style="padding:14px 18px; margin-bottom:0;">
+                    <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    Measurement Staircase Table
+                </div>
+                <div class="n-table-wrap">
+                    <table class="res-table" id="dkdStaircaseTable">
+                        <thead id="scTableHead"></thead>
+                        <tbody id="scTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Start Button & Unlock Actions -->
+            <div class="start-preload-area">
+                <div class="start-preload-desc">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    The table above represents the measurement map. Click the button below to begin the Preloading procedure for Sequence <span id="scStartSeqLabel">-</span>.
+                </div>
+                <div class="start-preload-btn-group">
+                    <button class="start-preload-btn" id="scStartBtn" type="button" onclick="startDkdWizard()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Start Preloading
+                    </button>
+                    <button class="sec-preload-btn" id="scUnlockBtn" type="button" onclick="confirmUnlockDkdSequence()" title="Unlock parameters and return to Configuration tab">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+                        Unlock Parameters
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ TAB 3: STAIRCASE GRAPH ═══ -->
+        <div class="tab-pane" id="pane_graph">
+
+            <!-- Preloading & Zero Data -->
+            <div class="n-card" style="padding:0; overflow:hidden;">
+                <div class="n-card-header" style="padding:14px 18px; margin-bottom:0;">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    Preloading &amp; Zero Setting Records
+                </div>
+                <div class="n-table-wrap">
+                    <table class="n-table">
+                        <thead>
+                            <tr>
+                                <th style="text-align:left;">Phase</th>
+                                <th>Cycle</th>
+                                <th>Target (bar)</th>
+                                <th>Reading (bar)</th>
+                                <th>Hold Time</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dkdPreloadTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Metrological Ladder Chart -->
+            <div class="chart-card-n" style="height: 340px;">
+                <div class="chart-card-header">
+                    <span class="chart-card-title">Metrological Ladder Diagram</span>
+                </div>
+                <canvas id="dkdLadderChart"></canvas>
+            </div>
+
+        </div>
+
+        <!-- ═══ TAB 4: STATISTICS PARAMETER ═══ -->
+        <div class="tab-pane" id="pane_stats">
+
+            <!-- KPI Cards -->
+            <div class="kpi-grid">
+                <div class="kpi-card" id="kpiErrorCard">
+                    <div class="kpi-lbl">Max Error</div>
+                    <div class="kpi-val" id="dkdKpiError">-</div>
+                </div>
+                <div class="kpi-card" id="kpiHystCard">
+                    <div class="kpi-lbl">Max Hysteresis</div>
+                    <div class="kpi-val" id="dkdKpiHyst">-</div>
+                </div>
+                <div class="kpi-card" id="kpiRepeatCard">
+                    <div class="kpi-lbl">Repeatability</div>
+                    <div class="kpi-val" id="dkdKpiRepeat">-</div>
+                </div>
+                <div class="kpi-card" id="kpiUncertCard">
+                    <div class="kpi-lbl">Expanded Uncert. (U)</div>
+                    <div class="kpi-val" id="dkdKpiUncert">-</div>
+                </div>
+            </div>
+
+            <!-- Table 1: Calibration Certificate -->
+            <div class="n-card" style="padding:0; overflow:hidden;">
+                <div class="n-card-header" style="padding:14px 18px; margin-bottom:0; display:flex; justify-content:space-between; align-items:center; width:100%;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        <span>Table 1 - Calibration Certificate (Physical Data)</span>
+                    </div>
+                    <button id="btnDetailT1" class="detail-calc-btn" onclick="openDetailModal('table1')" style="display:none;">
+                        Detail Kalkulasi
+                    </button>
+                </div>
+                <div class="n-table-wrap" id="dkdCertTableWrap" style="overflow-x:auto;">
+                    <p style="padding:12px; color:var(--text-muted); font-size:13px;">Waiting for calibration data...</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══ TAB 5: UNCERTAINTY BUDGET ═══ -->
+        <div class="tab-pane" id="pane_uncert">
+
+            <!-- Table 2: Uncertainty Budget -->
+            <div class="n-card" style="padding:0; overflow:hidden;">
+                <div class="n-card-header" style="padding:14px 18px; margin-bottom:0; display:flex; justify-content:space-between; align-items:center; width:100%;">
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <span>Table 2 - Uncertainty Budget (Statistical Data / Auditor Appendix)</span>
+                    </div>
+                    <button id="btnDetailT2" class="detail-calc-btn" onclick="openDetailModal('table2')" style="display:none;">
+                        Detail Kalkulasi
+                    </button>
+                </div>
+                <div class="n-table-wrap" id="dkdUncTableWrap" style="overflow-x:auto;">
+                    <p style="padding:12px; color:var(--text-muted); font-size:13px;">Waiting for calibration data...</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ═══ TAB 6: AMBIENT MONITOR ═══ -->
+        <div class="tab-pane" id="pane_ambien">
+
+            <!-- Left: Sidebar Rail with 4 interactive slots -->
+            <div class="amb-sidebar-rail" id="ambSidebarRail">
+                <!-- Slot 1: ALL DATA (Hamburger icon) -->
+                <button type="button" class="amb-selector-btn" id="btnAmbAll" onclick="selectAmbParam('all')" title="All Data" aria-label="All Data">
+                    <span class="amb-sel-icon-wrap">
+                        <svg class="amb-hamburger-icon" width="22" height="18" viewBox="0 0 22 18" fill="none">
+                            <line x1="2" y1="3" x2="20" y2="3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="2" y1="9" x2="20" y2="9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="2" y1="15" x2="20" y2="15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </span>
+                </button>
+
+                <!-- Slot 2: Temperature -->
+                <button type="button" class="amb-selector-btn active" id="btnAmbTemp" onclick="selectAmbParam('temp')" title="Temperature" aria-label="Temperature">
+                    <span class="amb-sel-val" id="sensorTemp">- °C</span>
+                </button>
+
+                <!-- Slot 3: Humidity -->
+                <button type="button" class="amb-selector-btn" id="btnAmbHum" onclick="selectAmbParam('hum')" title="Humidity" aria-label="Humidity">
+                    <span class="amb-sel-val" id="sensorHumid">- %RH</span>
+                </button>
+
+                <!-- Slot 4: Barometric -->
+                <button type="button" class="amb-selector-btn" id="btnAmbBaro" onclick="selectAmbParam('baro')" title="Barometric" aria-label="Barometric">
+                    <span class="amb-sel-val" id="sensorPress">- hPa</span>
+                </button>
+            </div>
+
+            <!-- Right: Main Display Frame -->
+            <div class="amb-main-frame">
+
+                <!-- Top Row: Active Title & Unit on Left, Switcher on Right -->
+                <div class="amb-frame-top">
+                    <!-- Left: Header Title + Data/Unit Box -->
+                    <div class="amb-top-heading-group">
+                        <h2 class="amb-active-title" id="ambActiveTitle">TEMPERATURE</h2>
+                        
+                        <div class="amb-top-readout-group" id="ambTopReadoutGroup">
+                            <div class="amb-top-data-box">
+                                <span id="ambTopDataVal">-</span>
+                            </div>
+                            <div class="amb-top-unit-box">
+                                <!-- Temp Unit Dropdown -->
+                                <div class="amb-unit-wrap custom-select" id="ambUnitTempWrap">
+                                    <button class="cs-trigger amb-wireframe-unit-trigger" type="button" onclick="toggleCustomSelect('ambUnitTempWrap', event)">
+                                        <span id="ambUnitTempLabel">°C</span>
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="cs-dropdown amb-unit-dropdown" id="ambUnitTempDd">
+                                        <button class="cs-opt cs-opt-active" data-unit="°C" onclick="setAmbientUnit('temp','°C')">°C (Celsius)</button>
+                                        <button class="cs-opt" data-unit="°F" onclick="setAmbientUnit('temp','°F')">°F (Fahrenheit)</button>
+                                        <button class="cs-opt" data-unit="K" onclick="setAmbientUnit('temp','K')">K (Kelvin)</button>
+                                    </div>
+                                </div>
+
+                                <!-- Hum Unit Static Badge -->
+                                <div class="amb-unit-wrap" id="ambUnitHumWrap" style="display: none;">
+                                    <span class="amb-wireframe-unit-static" id="ambUnitHumLabel">%RH</span>
+                                </div>
+
+                                <!-- Press/Baro Unit Dropdown -->
+                                <div class="amb-unit-wrap custom-select" id="ambUnitPressWrap" style="display: none;">
+                                    <button class="cs-trigger amb-wireframe-unit-trigger" type="button" onclick="toggleCustomSelect('ambUnitPressWrap', event)">
+                                        <span id="ambUnitPressLabel">hPa</span>
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                                    </button>
+                                    <div class="cs-dropdown amb-unit-dropdown" id="ambUnitPressDd">
+                                        <button class="cs-opt cs-opt-active" data-unit="hPa" onclick="setAmbientUnit('press','hPa')">hPa (Hectopascal)</button>
+                                        <button class="cs-opt" data-unit="Pa" onclick="setAmbientUnit('press','Pa')">Pa (Pascal)</button>
+                                        <button class="cs-opt" data-unit="kPa" onclick="setAmbientUnit('press','kPa')">kPa (Kilopascal)</button>
+                                        <button class="cs-opt" data-unit="mbar" onclick="setAmbientUnit('press','mbar')">mbar (Millibar)</button>
+                                        <button class="cs-opt" data-unit="bar" onclick="setAmbientUnit('press','bar')">bar (Bar)</button>
+                                        <button class="cs-opt" data-unit="psi" onclick="setAmbientUnit('press','psi')">psi (Pound/sq inch)</button>
+                                        <button class="cs-opt" data-unit="mmHg" onclick="setAmbientUnit('press','mmHg')">mmHg (Torr)</button>
+                                        <button class="cs-opt" data-unit="atm" onclick="setAmbientUnit('press','atm')">atm (Atmosphere)</button>
+                                    </div>
+                                </div>
+
+                                <!-- All Unit Static Badge -->
+                                <div class="amb-unit-wrap" id="ambUnitAllWrap" style="display: none;">
+                                    <span class="amb-wireframe-unit-static">ALL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Trend Mode Switcher -->
+                    <div class="amb-top-ctrl-group">
+                        <div class="trend-mode-switcher">
+                            <button id="btnTrendLive" class="trend-mode-btn active" onclick="switchTrendMode('live')">LIVE TREND</button>
+                            <button id="btnTrendSession" class="trend-mode-btn" onclick="switchTrendMode('session')">SESSION TREND</button>
+                        </div>
+                        <span id="ambActiveAvgVal" style="display:none;" aria-hidden="true"></span>
+                    </div>
+                </div>
+
+                <!-- Middle: GRAPH Viewport -->
+                <div class="amb-frame-graph mode-temp" id="ambGraphArea">
+                    <!-- Temp Chart -->
+                    <div class="chart-canvas-wrap" id="wrapTrendTemp">
+                        <div class="chart-avg-badge" id="badgeAvgTemp">AVERAGE: - °C</div>
+                        <canvas id="chartTrendTemp"></canvas>
+                        <div class="chart-standby-overlay" id="standbyTemp">
+                            <span class="standby-text">No temperature recordings</span>
+                        </div>
+                    </div>
+
+                    <!-- Hum Chart -->
+                    <div class="chart-canvas-wrap" id="wrapTrendHum">
+                        <div class="chart-avg-badge" id="badgeAvgHum">AVERAGE: - %RH</div>
+                        <canvas id="chartTrendHum"></canvas>
+                        <div class="chart-standby-overlay" id="standbyHum">
+                            <span class="standby-text">No humidity recordings</span>
+                        </div>
+                    </div>
+
+                    <!-- Press Chart -->
+                    <div class="chart-canvas-wrap" id="wrapTrendPress">
+                        <div class="chart-avg-badge" id="badgeAvgPress">AVERAGE: - hPa</div>
+                        <canvas id="chartTrendPress"></canvas>
+                        <div class="chart-standby-overlay" id="standbyPress">
+                            <span class="standby-text">No pressure recordings</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Hidden Hooks for Background System Bindings -->
+            <div class="hidden" style="display:none !important;" aria-hidden="true">
+                <span class="sensor-dot disconnected" id="dotMasterStatus"></span>
+                <span id="ambMasterStatusDesc">Sensor Offline</span>
+                <span class="sensor-dot disconnected" id="dotTemp"></span>
+                <span id="stateLabelTemp">Offline</span>
+                <span class="sensor-dot disconnected" id="dotHumid"></span>
+                <span id="stateLabelHumid">Offline</span>
+                <span class="sensor-dot disconnected" id="dotPress"></span>
+                <span id="stateLabelPress">Offline</span>
+                <span id="avgTempLabel">Average: - °C</span>
+                <span id="avgHumLabel">Average: - %RH</span>
+                <span id="avgPressLabel">Average: - hPa</span>
+            </div>
+
+        </div>
+
+        <!-- ═══ TAB 7: SUMMARY ═══ -->
+        <div class="tab-pane" id="pane_summary">
+
+            <!-- Verdict Card -->
+            <div class="verdict-card">
+                <div class="verdict-icon pass" id="verdictIcon">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div class="verdict-status" id="dkdFinalStatus">-</div>
+                <div class="verdict-formula">|ē| + U_expanded ≤ MPE → Status</div>
+            </div>
+
+            <!-- Live Unit Conversion -->
+            <div class="unit-conv-bar">
+                <div style="font-size:13px; font-weight:700; color:var(--text-primary); display:flex; align-items:center; gap:6px;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Report Display (Live Conversion)
+                </div>
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <label style="font-size:12px; color:var(--text-secondary);">Convert to:</label>
+                    <div class="custom-select" id="dkdDisplayUnitWrap" style="min-width:72px; max-width:88px;">
+                        <button class="cs-trigger" type="button" onclick="toggleCustomSelect('dkdDisplayUnitWrap', event)">
+                            <span id="dkdDisplayUnitLabel">bar</span>
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="cs-dropdown" id="dkdDisplayUnitDropdown" style="min-width:unset; width:100%;"></div>
+                    </div>
+                    <input type="hidden" id="dkdDisplayUnit" value="bar">
+                </div>
+            </div>
+
+            <!-- Quick Export -->
+            <div class="n-card" style="text-align:center;">
+                <p style="color: var(--text-secondary); font-size: 13px; margin-bottom:16px;">DKD-R 6-1 data acquisition complete. Export the official certificate below, or use the ribbon toolbar above.</p>
+                <div class="export-row">
+                    <button class="primary-btn" onclick="exportDkdReport('pdf')" style="background: var(--purple); gap: 8px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        Download PDF Certificate
+                    </button>
+                    <button class="ghost-btn" onclick="exportDkdReport('excel')" style="gap: 8px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/></svg>
+                        Export Excel Data
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /tab-workspace -->
+
+</div><!-- /app-shell -->
+
+<div id="hintTooltip"></div>
+<div id="toastContainer"></div>
+<div id="importPromptOverlay" class="overlay">
+    <div class="confirm-dialog" style="max-width: 400px;">
+        <h2 style="margin-top:0">Import Session</h2>
+        <p style="color: var(--text-secondary)">Please enter your name. This will be recorded as the person who imported this session data.</p>
+        <div class="field" style="margin-top:16px; margin-bottom:24px;">
+            <label>Imported By <span class="req">*</span></label>
+            <input type="text" id="importNameInput" placeholder="Your Name" style="width:100%;" onkeydown="if(event.key==='Enter') proceedImport()">
+        </div>
+        <div class="confirm-actions">
+            <button class="ghost-btn" onclick="document.getElementById('importPromptOverlay').classList.remove('active')">Cancel</button>
+            <button class="primary-btn" onclick="proceedImport()">Select File(s)</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ── HARDWARE PROVISIONING WIZARD ──────────────── -->
+<div id="connectOverlay" class="overlay">
+    <div class="prov-dialog">
+        <div class="prov-header">
+            <div class="prov-header-left">
+                <div class="prov-header-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                </div>
+                <div>
+                    <h2 class="prov-title">Hardware Setup</h2>
+                    <p class="prov-subtitle">Provision your calibration device</p>
+                </div>
+            </div>
+            <button class="icon-btn" onclick="closeProvisioningDialog()" title="Close">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="prov-stepper">
+            <div class="prov-step-item" id="stepInd1"><div class="prov-step-circle">1</div><span class="prov-step-label">Connect</span></div>
+            <div class="prov-step-line" id="stepLine1"></div>
+            <div class="prov-step-item inactive" id="stepInd2"><div class="prov-step-circle">2</div><span class="prov-step-label">Configure</span></div>
+            <div class="prov-step-line" id="stepLine2"></div>
+            <div class="prov-step-item inactive" id="stepInd3"><div class="prov-step-circle">3</div><span class="prov-step-label">Done</span></div>
+        </div>
+        <div class="prov-state active" id="provState1">
+            <div class="prov-scan-area">
+                <div class="prov-scan-rings">
+                    <div class="prov-ring ring1"></div><div class="prov-ring ring2"></div><div class="prov-ring ring3"></div>
+                    <div class="prov-scan-core">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                    </div>
+                </div>
+            </div>
+            <h3 class="prov-state-title">Waiting for Device</h3>
+            <p class="prov-state-desc">Follow these steps to put your device in setup mode:</p>
+            <ol class="prov-instruction-list">
+                <li><span class="prov-inst-num">1</span><span>Press and hold the <strong>Setup</strong> button on your device for <strong>5 seconds</strong> until the status LED blinks rapidly.</span></li>
+                <li><span class="prov-inst-num">2</span><span>Open <strong>Windows WiFi settings</strong> (system tray) and connect to: <code class="prov-ssid-code">alition1.0</code></span></li>
+            </ol>
+            <div class="prov-scan-status" id="provScanStatus"><div class="prov-scan-dot-pulse"></div><span id="provScanText">Scanning for device at 192.168.4.1…</span></div>
+            <div class="prov-state-actions" style="justify-content: space-between;">
+                <button class="ghost-btn" onclick="closeProvisioningDialog()">Cancel</button>
+                <button class="ghost-btn" onclick="switchProvState(5)" style="color: var(--text-secondary); border-color: transparent;">Skip Setup (Manual Connect) &rarr;</button>
+            </div>
+        </div>
+        <div class="prov-state" id="provState2">
+            <div class="prov-detected-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Device detected at <strong>192.168.4.1</strong> - Ready to configure
+            </div>
+            <div class="prov-form-sections">
+                <div class="prov-section">
+                    <div class="prov-section-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg> Target WiFi Network</div>
+                    <div class="prov-field-row"><div class="field"><label>SSID (Network Name) <span class="req">*</span></label><input type="text" id="setupWifiSsid" placeholder="e.g. Factory_Network_2G"></div><div class="field"><label>Password</label><input type="password" id="setupWifiPass" placeholder="Leave blank if open network"></div></div>
+                </div>
+                <div class="prov-section">
+                    <div class="prov-section-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> MQTT Broker</div>
+                    <div class="prov-field-row"><div class="field" style="flex:2;"><label>Broker Address <span class="req">*</span></label><input type="text" id="setupMqttHost" placeholder="e.g. broker.hivemq.com"></div><div class="field" style="flex:1;"><label>Port <span class="req">*</span></label><input type="number" id="setupMqttPort" value="8883"></div></div>
+                    <div class="prov-field-row" style="margin-top: 10px;"><div class="field"><label>Username (Optional)</label><input type="text" id="setupMqttUser" placeholder="Broker username"></div><div class="field"><label>Password (Optional)</label><input type="password" id="setupMqttPass" placeholder="Broker password"></div></div>
+                </div>
+                <div class="prov-section">
+                    <div class="prov-section-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Device Identity</div>
+                    <div class="field"><label>Device Token / ID <span class="req">*</span></label><input type="text" id="setupDeviceId" placeholder="e.g. ALIT-001"></div>
+                </div>
+            </div>
+            <div class="prov-state-actions">
+                <button class="ghost-btn" onclick="switchProvState(1)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> Back</button>
+                <button class="primary-btn prov-send-btn" id="provSendBtn" onclick="pushConfigToDevice()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> Send Config &amp; Reboot</button>
+            </div>
+        </div>
+        <div class="prov-state" id="provState3">
+            <div class="prov-success-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h3 class="prov-state-title">Configuration Sent!</h3>
+            <p class="prov-state-desc">Your device is rebooting and will connect to the factory WiFi shortly.</p>
+            <div class="prov-success-checklist">
+                <div class="prov-success-step done"><div class="prov-success-step-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span>Configuration transmitted to device</span></div>
+                <div class="prov-success-step pending"><div class="prov-success-step-icon pending-icon">2</div><span>Reconnect your PC to <strong id="provSuccessSsid">the factory network</strong></span></div>
+                <div class="prov-success-step pending"><div class="prov-success-step-icon pending-icon">3</div><span>Click <strong>"Connect to MQTT"</strong> to start receiving live sensor data</span></div>
+            </div>
+            <div class="prov-state-actions">
+                <button class="ghost-btn" onclick="closeProvisioningDialog()">Close</button>
+                <button class="primary-btn" style="background: var(--green);" onclick="connectAfterProvisioning()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg> Connect to MQTT</button>
+            </div>
+        </div>
+        <div class="prov-state" id="provState4">
+            <h3 class="prov-state-title" style="margin-bottom: 20px;">Active Connection Summary</h3>
+            <div class="prov-form-sections">
+                <div class="prov-section">
+                    <div class="prov-field-row"><div class="field" style="flex:2;"><label>Broker Address</label><input type="text" id="summaryMqttHost" readonly></div><div class="field" style="flex:1;"><label>Port</label><input type="text" id="summaryMqttPort" readonly></div></div>
+                    <div class="prov-field-row" style="margin-top: 10px;"><div class="field"><label>Username</label><input type="text" id="summaryMqttUser" readonly></div><div class="field"><label>Device ID</label><input type="text" id="summaryDeviceId" readonly></div></div>
+                </div>
+            </div>
+            <div style="background: var(--red-dim); border-radius: 8px; padding: 12px; margin-top: 16px;">
+                <div style="display: flex; gap: 10px; align-items: flex-start;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red-solid)" stroke-width="2" style="margin-top:2px;"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <div style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;"><strong style="color: var(--red-solid);">Forget Device</strong><br>Resetting this memory will disconnect the current sensor data stream, and you will need to repeat Hardware Setup via AP Mode to reconnect the device.</div>
+                </div>
+            </div>
+            <div class="prov-state-actions" style="margin-top: 24px;">
+                <button class="ghost-btn" onclick="closeProvisioningDialog()">Close</button>
+                <button class="danger-btn" onclick="disconnectHardware(); closeProvisioningDialog();">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+                    Disconnect & Forget
+                </button>
+            </div>
+        </div>
+        <div class="prov-state" id="provState5">
+            <h3 class="prov-state-title" style="margin-bottom: 20px;">Manual MQTT Connection</h3>
+            <div class="prov-form-sections">
+                <div class="prov-section">
+                    <div class="prov-section-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> MQTT Broker</div>
+                    <div class="prov-field-row"><div class="field" style="flex:2;"><label>Broker Address <span class="req">*</span></label><input type="text" id="manualMqttHost" value="broker.hivemq.com"></div><div class="field" style="flex:1;"><label>Port <span class="req">*</span></label><input type="number" id="manualMqttPort" value="8883"></div></div>
+                    <div class="prov-field-row" style="margin-top: 10px;"><div class="field"><label>Username (Optional)</label><input type="text" id="manualMqttUser" placeholder="Broker username"></div><div class="field"><label>Password (Optional)</label><input type="password" id="manualMqttPass" placeholder="Broker password"></div></div>
+                </div>
+                <div class="prov-section">
+                    <div class="prov-section-label"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg> Device Identity</div>
+                    <div class="field"><label>Device Token / ID <span class="req">*</span></label><input type="text" id="manualDeviceId" placeholder="e.g. ALIT-001"></div>
+                </div>
+            </div>
+            <div class="prov-state-actions" style="margin-top: 24px;">
+                <button class="ghost-btn" onclick="switchProvState(1)">Back</button>
+                <button class="primary-btn" style="background: var(--green);" onclick="manualConnectMqtt()"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg> Connect</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── CONNECTION INFO MODAL ──────────────── -->
+<div id="connInfoOverlay" class="overlay">
+    <div class="prov-dialog" style="max-width: 400px;">
+        <div class="prov-header">
+            <div class="prov-header-left">
+                <div class="prov-header-icon" style="color: var(--green); background: var(--green-dim);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                </div>
+                <div>
+                    <h2 class="prov-title">Connection Status</h2>
+                    <p class="prov-subtitle">Currently connected to hardware stream</p>
+                </div>
+            </div>
+            <button class="icon-btn" onclick="closeConnInfoModal()" title="Close">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+        </div>
+        <div class="prov-form-sections" style="margin-top: 24px; margin-bottom: 24px;">
+            <div class="prov-section" style="margin-bottom: 0;">
+                <div style="margin-bottom: 12px; padding: 10px; background: var(--bg-card-inner); border-radius: 6px; box-shadow: var(--shadow-inset);">
+                    <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--text-muted); min-width: 90px; display: inline-block;">MQTT Broker</span>
+                    <span id="infoMqttBroker" style="font-family: var(--mono); font-size: 13px; font-weight:600; color:var(--text-primary);">-</span>
+                </div>
+                <div style="margin-bottom: 12px; padding: 10px; background: var(--bg-card-inner); border-radius: 6px; box-shadow: var(--shadow-inset);">
+                    <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--text-muted); min-width: 90px; display: inline-block;">Port</span>
+                    <span id="infoMqttPort" style="font-family: var(--mono); font-size: 13px; font-weight:600; color:var(--text-primary);">-</span>
+                </div>
+                <div style="padding: 10px; background: var(--bg-card-inner); border-radius: 6px; box-shadow: var(--shadow-inset);">
+                    <span style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; color:var(--text-muted); min-width: 90px; display: inline-block;">Device ID</span>
+                    <span id="infoMqttDevice" style="font-family: var(--mono); font-size: 13px; font-weight:600; color:var(--text-primary);">-</span>
+                </div>
+            </div>
+        </div>
+        <div class="prov-state-actions" style="margin-top:0;">
+            <button class="ghost-btn" onclick="closeConnInfoModal()">Stay Connected</button>
+            <button class="danger-btn" onclick="disconnectHardware()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+                Disconnect
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ── DKD MEASUREMENT WIZARD MODAL ─────────────────────────────── -->
+<div id="dkdWizardOverlay" class="overlay">
+    <div class="dkd-wizard-dialog">
+        <div class="wiz-header">
+            <div class="wiz-header-left">
+                <div class="wiz-phase-badge" id="wizPhaseBadge">Preloading</div>
+                <div class="wiz-header-info">
+                    <div class="wiz-title" id="wizTitle">Preloading - Cycle 1</div>
+                    <div class="wiz-subtitle" id="wizSubtitle">DKD-R 6-1 Calibration Procedure</div>
+                </div>
+            </div>
+            <div class="wiz-progress-wrap">
+                <div class="wiz-progress-bar"><div class="wiz-progress-fill" id="wizProgressFill" style="width:0%"></div></div>
+                <span class="wiz-progress-label" id="wizProgressLabel">0%</span>
+            </div>
+        </div>
+        <div class="wiz-body" id="wizBody"></div>
+        <div class="wiz-footer" id="wizFooter">
+            <div class="wiz-countdown" id="wizCountdown" style="display:none; width: 100%; justify-content: space-between; align-items:center;">
+                <div style="display:flex; align-items:center; gap:16px;">
+                    <div class="wiz-cd-ring">
+                        <svg viewBox="0 0 60 60" class="wiz-cd-svg">
+                            <circle class="wiz-cd-track" cx="30" cy="30" r="24"/>
+                            <circle class="wiz-cd-fill" id="wizCdCircle" cx="30" cy="30" r="24" style="stroke-dasharray: 150.796; stroke-dashoffset: 0;"/>
+                        </svg>
+                        <span class="wiz-cd-text" id="wizCdText">30</span>
+                    </div>
+                    <div class="wiz-cd-label" id="wizCdLabel" style="font-weight:600;">Hold this position</div>
+                </div>
+                <button class="ghost-btn" id="wizSkipCdBtn" onclick="skipCountdown()" style="font-size:12px; padding:6px 12px;">Skip Timer</button>
+            </div>
+            <div class="wiz-actions" id="wizActions" style="width: 100%; display: flex; justify-content: space-between;">
+                <button class="ghost-btn" id="wizCancelBtn" onclick="cancelDkdWizard()" style="color: var(--red-solid);">Cancel</button>
+                <button class="primary-btn wiz-next-btn" id="wizNextBtn" onclick="onWizardNext()">
+                    Next
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── CALCULATION DETAIL MODAL ──────────────────────────────── -->
+<div id="detailModalOverlay" class="overlay" style="z-index: 10000;">
+    <div class="detail-modal-dialog">
+        <div class="detail-modal-header">
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+                <div class="detail-modal-title" id="detailModalTitle">Detail Kalkulasi</div>
+                <div class="detail-modal-subtitle" id="detailModalSubtitle">DKD-R 6-1 Calibration Details</div>
+            </div>
+            <button class="detail-modal-close-btn" onclick="closeDetailModal()">✕</button>
+        </div>
+        <div class="detail-setpoint-tabs-wrapper">
+            <div class="detail-setpoint-tabs" id="detailSetpointTabs"></div>
+        </div>
+        <div class="detail-modal-body" id="detailModalBody"></div>
+    </div>
+</div>
+
+<div id="toastContainer" class="toast-container"></div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Username : ALITION001
+Password : Alition001
+URL : 984f4bb33e744358b8ec713cadc8e8f4.s1.eu.hivemq.cloud
+device name : ALITION_01

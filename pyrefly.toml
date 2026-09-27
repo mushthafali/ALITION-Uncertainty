@@ -1,0 +1,20 @@
+# Pyrefly type-checker configuration
+# Adds the src/ directory to the import search path so internal
+# packages (alition.*) can be resolved correctly.
+[tool.pyrefly]
+search_path = ["src"]
+
+# Suppress "import could not be resolved" for third-party packages
+# that ship without py.typed markers or bundled stubs.
+ignore_missing_imports = [
+    "pydantic",
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "pandas",
+    "reportlab",
+    "webview",
+    "openpyxl",
+    "paho",
+    "requests",
+]

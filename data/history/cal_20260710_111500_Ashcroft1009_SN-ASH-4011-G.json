@@ -1,0 +1,220 @@
+{
+    "version": "2.0.0",
+    "timestamp": "2026-07-10T11:15:00.000000",
+    "input": {
+        "lrv": 0.0,
+        "urv": 10.0,
+        "tolerance_pct": 1.0,
+        "points": [
+            {
+                "set_point": 0.0,
+                "readings_up": [
+                    0.003,
+                    0.005
+                ],
+                "readings_down": [
+                    0.007
+                ]
+            },
+            {
+                "set_point": 2.5,
+                "readings_up": [
+                    2.508,
+                    2.51
+                ],
+                "readings_down": [
+                    2.512
+                ]
+            },
+            {
+                "set_point": 5.0,
+                "readings_up": [
+                    5.013,
+                    5.015
+                ],
+                "readings_down": [
+                    5.017
+                ]
+            },
+            {
+                "set_point": 7.5,
+                "readings_up": [
+                    7.518,
+                    7.52
+                ],
+                "readings_down": [
+                    7.522
+                ]
+            },
+            {
+                "set_point": 10.0,
+                "readings_up": [
+                    10.023,
+                    10.025
+                ],
+                "readings_down": [
+                    10.027
+                ]
+            }
+        ],
+        "ref_uncertainty": 0.01,
+        "resolution": 0.01,
+        "metadata": {
+            "operator_name": "Dian Permata",
+            "instrument_model": "Ashcroft 1009",
+            "serial_number": "SN-ASH-4011-G",
+            "tag_number": "PG-105",
+            "date": "2026-07-10",
+            "location": "Utility Plant",
+            "calibration_standard": "Default"
+        }
+    },
+    "result": {
+        "span": 10.0,
+        "max_error_pct_span": 0.25,
+        "actual_accuracy_pct": 0.25,
+        "mean_error": 0.012,
+        "std_dev": 0.002,
+        "rmse": 0.014,
+        "linearity_error_pct": 0.02,
+        "zero_error": 0.005,
+        "span_error": 0.025,
+        "max_hysteresis": 0.004,
+        "overall_status": "PASS",
+        "point_results": [
+            {
+                "set_point": 0.0,
+                "avg_reading": 0.005,
+                "readings": [
+                    0.003,
+                    0.005,
+                    0.007
+                ],
+                "error": 0.005,
+                "error_pct_span": 0.05,
+                "std_dev": 0.002,
+                "repeatability_error": 0.004,
+                "repeatability_pct_span": 0.04,
+                "status": "PASS"
+            },
+            {
+                "set_point": 2.5,
+                "avg_reading": 2.51,
+                "readings": [
+                    2.508,
+                    2.51,
+                    2.512
+                ],
+                "error": 0.01,
+                "error_pct_span": 0.1,
+                "std_dev": 0.002,
+                "repeatability_error": 0.004,
+                "repeatability_pct_span": 0.04,
+                "status": "PASS"
+            },
+            {
+                "set_point": 5.0,
+                "avg_reading": 5.015,
+                "readings": [
+                    5.013,
+                    5.015,
+                    5.017
+                ],
+                "error": 0.015,
+                "error_pct_span": 0.15,
+                "std_dev": 0.002,
+                "repeatability_error": 0.004,
+                "repeatability_pct_span": 0.04,
+                "status": "PASS"
+            },
+            {
+                "set_point": 7.5,
+                "avg_reading": 7.52,
+                "readings": [
+                    7.518,
+                    7.52,
+                    7.522
+                ],
+                "error": 0.02,
+                "error_pct_span": 0.2,
+                "std_dev": 0.002,
+                "repeatability_error": 0.004,
+                "repeatability_pct_span": 0.04,
+                "status": "PASS"
+            },
+            {
+                "set_point": 10.0,
+                "avg_reading": 10.025,
+                "readings": [
+                    10.023,
+                    10.025,
+                    10.027
+                ],
+                "error": 0.025,
+                "error_pct_span": 0.25,
+                "std_dev": 0.002,
+                "repeatability_error": 0.004,
+                "repeatability_pct_span": 0.04,
+                "status": "PASS"
+            }
+        ]
+    },
+    "session_trend_log": [
+        {
+            "ts": 1700000000000,
+            "timeStr": "00:00",
+            "temp": 23.3,
+            "hum": 53.3,
+            "press": 1016.0
+        },
+        {
+            "ts": 1700000120000,
+            "timeStr": "02:00",
+            "temp": 23.4,
+            "hum": 53.3,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000240000,
+            "timeStr": "04:00",
+            "temp": 23.4,
+            "hum": 53.2,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000360000,
+            "timeStr": "06:00",
+            "temp": 23.4,
+            "hum": 53.0,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000480000,
+            "timeStr": "08:00",
+            "temp": 23.4,
+            "hum": 52.9,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000600000,
+            "timeStr": "10:00",
+            "temp": 23.3,
+            "hum": 52.8,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000720000,
+            "timeStr": "12:00",
+            "temp": 23.3,
+            "hum": 52.7,
+            "press": 1016.1
+        },
+        {
+            "ts": 1700000840000,
+            "timeStr": "14:00",
+            "temp": 23.2,
+            "hum": 52.7,
+            "press": 1016.1
+        }
+    ]
+}

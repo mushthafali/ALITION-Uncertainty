@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/src/alition/web/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/src/alition/web/$1"
+    }
+  ]
+}

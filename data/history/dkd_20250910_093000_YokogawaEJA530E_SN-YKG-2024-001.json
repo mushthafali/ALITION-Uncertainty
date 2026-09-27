@@ -1,0 +1,1349 @@
+{
+    "version": "2.0.0",
+    "timestamp": "2025-09-10T09:30:00.000000",
+    "input": {
+        "metadata": {
+            "operator_name": "Ahmad Pratama",
+            "instrument_model": "Yokogawa EJA530E",
+            "serial_number": "SN-YKG-2024-001",
+            "tag_number": "PT-101A",
+            "date": "2025-09-10",
+            "location": "Central Cal Lab",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "lrv": 0.0,
+        "urv": 100.0,
+        "tolerance_pct": 0.25,
+        "points": [
+            {
+                "set_point": 0.0,
+                "readings_up": [
+                    0.0
+                ],
+                "readings_down": [
+                    0.01
+                ]
+            },
+            {
+                "set_point": 12.5,
+                "readings_up": [
+                    12.522
+                ],
+                "readings_down": [
+                    12.555
+                ]
+            },
+            {
+                "set_point": 25.0,
+                "readings_up": [
+                    25.04
+                ],
+                "readings_down": [
+                    25.093
+                ]
+            },
+            {
+                "set_point": 37.5,
+                "readings_up": [
+                    37.554
+                ],
+                "readings_down": [
+                    37.619
+                ]
+            },
+            {
+                "set_point": 50.0,
+                "readings_up": [
+                    50.06
+                ],
+                "readings_down": [
+                    50.13
+                ]
+            },
+            {
+                "set_point": 62.5,
+                "readings_up": [
+                    62.559
+                ],
+                "readings_down": [
+                    62.624
+                ]
+            },
+            {
+                "set_point": 75.0,
+                "readings_up": [
+                    75.05
+                ],
+                "readings_down": [
+                    75.103
+                ]
+            },
+            {
+                "set_point": 87.5,
+                "readings_up": [
+                    87.537
+                ],
+                "readings_down": [
+                    87.57
+                ]
+            },
+            {
+                "set_point": 100.0,
+                "readings_up": [
+                    100.02
+                ],
+                "readings_down": [
+                    100.03
+                ]
+            }
+        ]
+    },
+    "result": {
+        "overall_status": "FAIL",
+        "span": 100.0,
+        "max_error_pct_span": 0.09,
+        "actual_accuracy_pct": 0.09,
+        "mean_error": 0.059177777777777774,
+        "std_dev": 0.2,
+        "rmse": 0.06473685194693977,
+        "linearity_error_pct": 0.015,
+        "zero_error": 0.01,
+        "span_error": 0.03,
+        "max_hysteresis": 0.07,
+        "point_results": [
+            {
+                "set_point": 0.0,
+                "avg_reading": 0.01,
+                "error": 0.01,
+                "error_pct_span": 0.01,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 12.5,
+                "avg_reading": 12.5397,
+                "error": 0.0397,
+                "error_pct_span": 0.0397,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 25.0,
+                "avg_reading": 25.0643,
+                "error": 0.0643,
+                "error_pct_span": 0.0643,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 37.5,
+                "avg_reading": 37.5823,
+                "error": 0.0823,
+                "error_pct_span": 0.0823,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 50.0,
+                "avg_reading": 50.09,
+                "error": 0.09,
+                "error_pct_span": 0.09,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 62.5,
+                "avg_reading": 62.5873,
+                "error": 0.0873,
+                "error_pct_span": 0.0873,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 75.0,
+                "avg_reading": 75.0743,
+                "error": 0.0743,
+                "error_pct_span": 0.0743,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 87.5,
+                "avg_reading": 87.5547,
+                "error": 0.0547,
+                "error_pct_span": 0.0547,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            },
+            {
+                "set_point": 100.0,
+                "avg_reading": 100.03,
+                "error": 0.03,
+                "error_pct_span": 0.03,
+                "std_dev": 0.1,
+                "repeatability_error": 0.02,
+                "repeatability_pct_span": 0.02,
+                "status": "FAIL"
+            }
+        ]
+    },
+    "dkd_data": {
+        "sequence": "B",
+        "setup": {
+            "input_unit": "bar",
+            "lrv": 0.0,
+            "urv": 100.0,
+            "resolution": 0.01,
+            "mpe_percent": 0.25,
+            "calibrator_type": "DIGITAL",
+            "height_diff": 0.0,
+            "medium_density": 1.2,
+            "std_full_scale": 100.0,
+            "std_accuracy_percent": 0.025,
+            "u_standard_dwt": 0.0,
+            "alpha_beta": 0.0,
+            "rho_m": 8000.0,
+            "lambda_val": 0.0
+        },
+        "meta": {
+            "operator_name": "Ahmad Pratama",
+            "instrument_model": "Yokogawa EJA530E",
+            "serial_number": "SN-YKG-2024-001",
+            "tag_number": "PT-101A",
+            "date": "2025-09-10",
+            "location": "Central Cal Lab",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "cert_number": "ALT/CAL/2025/09/0001",
+        "setpoints": [
+            0.0,
+            12.5,
+            25.0,
+            37.5,
+            50.0,
+            62.5,
+            75.0,
+            87.5,
+            100.0
+        ],
+        "mSeries": [
+            "M1",
+            "M2",
+            "M3"
+        ],
+        "measurementData": {
+            "M1": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.0,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 12.5,
+                    "reading_master": 12.5,
+                    "reading_uut": 12.522,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.04,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 37.5,
+                    "reading_master": 37.5,
+                    "reading_uut": 37.554,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.06,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 62.5,
+                    "reading_master": 62.5,
+                    "reading_uut": 62.559,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.05,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 87.5,
+                    "reading_master": 87.5,
+                    "reading_uut": 87.537,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.02,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:100:00"
+                }
+            ],
+            "M2": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.01,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 12.5,
+                    "reading_master": 12.5,
+                    "reading_uut": 12.555,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.093,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 37.5,
+                    "reading_master": 37.5,
+                    "reading_uut": 37.619,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.13,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 62.5,
+                    "reading_master": 62.5,
+                    "reading_uut": 62.624,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.103,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 87.5,
+                    "reading_master": 87.5,
+                    "reading_uut": 87.57,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.03,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:100:00"
+                }
+            ],
+            "M3": [
+                {
+                    "setpoint_pct": 0.0,
+                    "nominal_ideal": 0.0,
+                    "reading_master": 0.0,
+                    "reading_uut": 0.02,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:00:00"
+                },
+                {
+                    "setpoint_pct": 12.5,
+                    "nominal_ideal": 12.5,
+                    "reading_master": 12.5,
+                    "reading_uut": 12.542,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:12:00"
+                },
+                {
+                    "setpoint_pct": 25.0,
+                    "nominal_ideal": 25.0,
+                    "reading_master": 25.0,
+                    "reading_uut": 25.06,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:25:00"
+                },
+                {
+                    "setpoint_pct": 37.5,
+                    "nominal_ideal": 37.5,
+                    "reading_master": 37.5,
+                    "reading_uut": 37.574,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:37:00"
+                },
+                {
+                    "setpoint_pct": 50.0,
+                    "nominal_ideal": 50.0,
+                    "reading_master": 50.0,
+                    "reading_uut": 50.08,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:50:00"
+                },
+                {
+                    "setpoint_pct": 62.5,
+                    "nominal_ideal": 62.5,
+                    "reading_master": 62.5,
+                    "reading_uut": 62.579,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:62:00"
+                },
+                {
+                    "setpoint_pct": 75.0,
+                    "nominal_ideal": 75.0,
+                    "reading_master": 75.0,
+                    "reading_uut": 75.07,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:75:00"
+                },
+                {
+                    "setpoint_pct": 87.5,
+                    "nominal_ideal": 87.5,
+                    "reading_master": 87.5,
+                    "reading_uut": 87.557,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:87:00"
+                },
+                {
+                    "setpoint_pct": 100.0,
+                    "nominal_ideal": 100.0,
+                    "reading_master": 100.0,
+                    "reading_uut": 100.04,
+                    "env": {
+                        "temp": "23.2 °C",
+                        "humidity": "50 %RH",
+                        "pressure": "1013.2 hPa"
+                    },
+                    "timestamp": "2025-09-10T10:100:00"
+                }
+            ]
+        },
+        "rowResults": [
+            {
+                "pct": 0.0,
+                "nom_ideal": 0.0,
+                "p_std": 0.0,
+                "mean": 0.01,
+                "dev": 0.01,
+                "h_f": 0.01,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00289,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14453,
+                "U": 0.2891,
+                "pass": false,
+                "m_vals": {
+                    "M1": 0.0,
+                    "M2": 0.01,
+                    "M3": 0.02
+                },
+                "master_vals": {
+                    "M1": 0.0,
+                    "M2": 0.0,
+                    "M3": 0.0
+                },
+                "m1": 0.0,
+                "m2": 0.01,
+                "m3": 0.02,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 12.5,
+                "nom_ideal": 12.5,
+                "p_std": 12.5,
+                "mean": 12.5397,
+                "dev": 0.0397,
+                "h_f": 0.033,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00953,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14481,
+                "U": 0.2896,
+                "pass": false,
+                "m_vals": {
+                    "M1": 12.522,
+                    "M2": 12.555,
+                    "M3": 12.542
+                },
+                "master_vals": {
+                    "M1": 12.5,
+                    "M2": 12.5,
+                    "M3": 12.5
+                },
+                "m1": 12.522,
+                "m2": 12.555,
+                "m3": 12.542,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 25.0,
+                "nom_ideal": 25.0,
+                "p_std": 25.0,
+                "mean": 25.0643,
+                "dev": 0.0643,
+                "h_f": 0.053,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.0153,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14531,
+                "U": 0.2906,
+                "pass": false,
+                "m_vals": {
+                    "M1": 25.04,
+                    "M2": 25.093,
+                    "M3": 25.06
+                },
+                "master_vals": {
+                    "M1": 25.0,
+                    "M2": 25.0,
+                    "M3": 25.0
+                },
+                "m1": 25.04,
+                "m2": 25.093,
+                "m3": 25.06,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 37.5,
+                "nom_ideal": 37.5,
+                "p_std": 37.5,
+                "mean": 37.5823,
+                "dev": 0.0823,
+                "h_f": 0.065,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.01876,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14571,
+                "U": 0.2914,
+                "pass": false,
+                "m_vals": {
+                    "M1": 37.554,
+                    "M2": 37.619,
+                    "M3": 37.574
+                },
+                "master_vals": {
+                    "M1": 37.5,
+                    "M2": 37.5,
+                    "M3": 37.5
+                },
+                "m1": 37.554,
+                "m2": 37.619,
+                "m3": 37.574,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 50.0,
+                "nom_ideal": 50.0,
+                "p_std": 50.0,
+                "mean": 50.09,
+                "dev": 0.09,
+                "h_f": 0.07,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.02021,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14591,
+                "U": 0.2918,
+                "pass": false,
+                "m_vals": {
+                    "M1": 50.06,
+                    "M2": 50.13,
+                    "M3": 50.08
+                },
+                "master_vals": {
+                    "M1": 50.0,
+                    "M2": 50.0,
+                    "M3": 50.0
+                },
+                "m1": 50.06,
+                "m2": 50.13,
+                "m3": 50.08,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 62.5,
+                "nom_ideal": 62.5,
+                "p_std": 62.5,
+                "mean": 62.5873,
+                "dev": 0.0873,
+                "h_f": 0.065,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.01876,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14571,
+                "U": 0.2914,
+                "pass": false,
+                "m_vals": {
+                    "M1": 62.559,
+                    "M2": 62.624,
+                    "M3": 62.579
+                },
+                "master_vals": {
+                    "M1": 62.5,
+                    "M2": 62.5,
+                    "M3": 62.5
+                },
+                "m1": 62.559,
+                "m2": 62.624,
+                "m3": 62.579,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 75.0,
+                "nom_ideal": 75.0,
+                "p_std": 75.0,
+                "mean": 75.0743,
+                "dev": 0.0743,
+                "h_f": 0.053,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.0153,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14531,
+                "U": 0.2906,
+                "pass": false,
+                "m_vals": {
+                    "M1": 75.05,
+                    "M2": 75.103,
+                    "M3": 75.07
+                },
+                "master_vals": {
+                    "M1": 75.0,
+                    "M2": 75.0,
+                    "M3": 75.0
+                },
+                "m1": 75.05,
+                "m2": 75.103,
+                "m3": 75.07,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 87.5,
+                "nom_ideal": 87.5,
+                "p_std": 87.5,
+                "mean": 87.5547,
+                "dev": 0.0547,
+                "h_f": 0.033,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00953,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14481,
+                "U": 0.2896,
+                "pass": false,
+                "m_vals": {
+                    "M1": 87.537,
+                    "M2": 87.57,
+                    "M3": 87.557
+                },
+                "master_vals": {
+                    "M1": 87.5,
+                    "M2": 87.5,
+                    "M3": 87.5
+                },
+                "m1": 87.537,
+                "m2": 87.57,
+                "m3": 87.557,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 100.0,
+                "nom_ideal": 100.0,
+                "p_std": 100.0,
+                "mean": 100.03,
+                "dev": 0.03,
+                "h_f": 0.01,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00289,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14453,
+                "U": 0.2891,
+                "pass": false,
+                "m_vals": {
+                    "M1": 100.02,
+                    "M2": 100.03,
+                    "M3": 100.04
+                },
+                "master_vals": {
+                    "M1": 100.0,
+                    "M2": 100.0,
+                    "M3": 100.0
+                },
+                "m1": 100.02,
+                "m2": 100.03,
+                "m3": 100.04,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            }
+        ],
+        "lastRowResults": [
+            {
+                "pct": 0.0,
+                "nom_ideal": 0.0,
+                "p_std": 0.0,
+                "mean": 0.01,
+                "dev": 0.01,
+                "h_f": 0.01,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00289,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14453,
+                "U": 0.2891,
+                "pass": false,
+                "m_vals": {
+                    "M1": 0.0,
+                    "M2": 0.01,
+                    "M3": 0.02
+                },
+                "master_vals": {
+                    "M1": 0.0,
+                    "M2": 0.0,
+                    "M3": 0.0
+                },
+                "m1": 0.0,
+                "m2": 0.01,
+                "m3": 0.02,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 12.5,
+                "nom_ideal": 12.5,
+                "p_std": 12.5,
+                "mean": 12.5397,
+                "dev": 0.0397,
+                "h_f": 0.033,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00953,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14481,
+                "U": 0.2896,
+                "pass": false,
+                "m_vals": {
+                    "M1": 12.522,
+                    "M2": 12.555,
+                    "M3": 12.542
+                },
+                "master_vals": {
+                    "M1": 12.5,
+                    "M2": 12.5,
+                    "M3": 12.5
+                },
+                "m1": 12.522,
+                "m2": 12.555,
+                "m3": 12.542,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 25.0,
+                "nom_ideal": 25.0,
+                "p_std": 25.0,
+                "mean": 25.0643,
+                "dev": 0.0643,
+                "h_f": 0.053,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.0153,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14531,
+                "U": 0.2906,
+                "pass": false,
+                "m_vals": {
+                    "M1": 25.04,
+                    "M2": 25.093,
+                    "M3": 25.06
+                },
+                "master_vals": {
+                    "M1": 25.0,
+                    "M2": 25.0,
+                    "M3": 25.0
+                },
+                "m1": 25.04,
+                "m2": 25.093,
+                "m3": 25.06,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 37.5,
+                "nom_ideal": 37.5,
+                "p_std": 37.5,
+                "mean": 37.5823,
+                "dev": 0.0823,
+                "h_f": 0.065,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.01876,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14571,
+                "U": 0.2914,
+                "pass": false,
+                "m_vals": {
+                    "M1": 37.554,
+                    "M2": 37.619,
+                    "M3": 37.574
+                },
+                "master_vals": {
+                    "M1": 37.5,
+                    "M2": 37.5,
+                    "M3": 37.5
+                },
+                "m1": 37.554,
+                "m2": 37.619,
+                "m3": 37.574,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 50.0,
+                "nom_ideal": 50.0,
+                "p_std": 50.0,
+                "mean": 50.09,
+                "dev": 0.09,
+                "h_f": 0.07,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.02021,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14591,
+                "U": 0.2918,
+                "pass": false,
+                "m_vals": {
+                    "M1": 50.06,
+                    "M2": 50.13,
+                    "M3": 50.08
+                },
+                "master_vals": {
+                    "M1": 50.0,
+                    "M2": 50.0,
+                    "M3": 50.0
+                },
+                "m1": 50.06,
+                "m2": 50.13,
+                "m3": 50.08,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 62.5,
+                "nom_ideal": 62.5,
+                "p_std": 62.5,
+                "mean": 62.5873,
+                "dev": 0.0873,
+                "h_f": 0.065,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.01876,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14571,
+                "U": 0.2914,
+                "pass": false,
+                "m_vals": {
+                    "M1": 62.559,
+                    "M2": 62.624,
+                    "M3": 62.579
+                },
+                "master_vals": {
+                    "M1": 62.5,
+                    "M2": 62.5,
+                    "M3": 62.5
+                },
+                "m1": 62.559,
+                "m2": 62.624,
+                "m3": 62.579,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 75.0,
+                "nom_ideal": 75.0,
+                "p_std": 75.0,
+                "mean": 75.0743,
+                "dev": 0.0743,
+                "h_f": 0.053,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.0153,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14531,
+                "U": 0.2906,
+                "pass": false,
+                "m_vals": {
+                    "M1": 75.05,
+                    "M2": 75.103,
+                    "M3": 75.07
+                },
+                "master_vals": {
+                    "M1": 75.0,
+                    "M2": 75.0,
+                    "M3": 75.0
+                },
+                "m1": 75.05,
+                "m2": 75.103,
+                "m3": 75.07,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 87.5,
+                "nom_ideal": 87.5,
+                "p_std": 87.5,
+                "mean": 87.5547,
+                "dev": 0.0547,
+                "h_f": 0.033,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00953,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14481,
+                "U": 0.2896,
+                "pass": false,
+                "m_vals": {
+                    "M1": 87.537,
+                    "M2": 87.57,
+                    "M3": 87.557
+                },
+                "master_vals": {
+                    "M1": 87.5,
+                    "M2": 87.5,
+                    "M3": 87.5
+                },
+                "m1": 87.537,
+                "m2": 87.57,
+                "m3": 87.557,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            },
+            {
+                "pct": 100.0,
+                "nom_ideal": 100.0,
+                "p_std": 100.0,
+                "mean": 100.03,
+                "dev": 0.03,
+                "h_f": 0.01,
+                "b_prime_f": 0.02,
+                "b_f": null,
+                "u_h": 0.00289,
+                "u_b_prime": 0.00577,
+                "u_b": 0.0,
+                "u_c": 0.14453,
+                "U": 0.2891,
+                "pass": false,
+                "m_vals": {
+                    "M1": 100.02,
+                    "M2": 100.03,
+                    "M3": 100.04
+                },
+                "master_vals": {
+                    "M1": 100.0,
+                    "M2": 100.0,
+                    "M3": 100.0
+                },
+                "m1": 100.02,
+                "m2": 100.03,
+                "m3": 100.04,
+                "m4": null,
+                "m5": null,
+                "m6": null
+            }
+        ],
+        "preloadData": [
+            {
+                "cycle": 1,
+                "round": 1,
+                "reading_max": 100.0,
+                "reading_zero": 0.0
+            },
+            {
+                "cycle": 2,
+                "round": 1,
+                "reading_max": 100.0,
+                "reading_zero": 0.0
+            }
+        ],
+        "session_trend_log": [
+            {
+                "ts": 1700000000000,
+                "timeStr": "00:00",
+                "temp": 24.3,
+                "hum": 48.4,
+                "press": 1015.0
+            },
+            {
+                "ts": 1700000120000,
+                "timeStr": "02:00",
+                "temp": 24.4,
+                "hum": 48.4,
+                "press": 1015.1
+            },
+            {
+                "ts": 1700000240000,
+                "timeStr": "04:00",
+                "temp": 24.4,
+                "hum": 48.3,
+                "press": 1015.1
+            },
+            {
+                "ts": 1700000360000,
+                "timeStr": "06:00",
+                "temp": 24.4,
+                "hum": 48.1,
+                "press": 1015.2
+            },
+            {
+                "ts": 1700000480000,
+                "timeStr": "08:00",
+                "temp": 24.4,
+                "hum": 48.0,
+                "press": 1015.2
+            },
+            {
+                "ts": 1700000600000,
+                "timeStr": "10:00",
+                "temp": 24.4,
+                "hum": 47.8,
+                "press": 1015.2
+            },
+            {
+                "ts": 1700000720000,
+                "timeStr": "12:00",
+                "temp": 24.3,
+                "hum": 47.7,
+                "press": 1015.2
+            },
+            {
+                "ts": 1700000840000,
+                "timeStr": "14:00",
+                "temp": 24.2,
+                "hum": 47.6,
+                "press": 1015.2
+            },
+            {
+                "ts": 1700000960000,
+                "timeStr": "16:00",
+                "temp": 24.2,
+                "hum": 47.6,
+                "press": 1015.1
+            },
+            {
+                "ts": 1700001080000,
+                "timeStr": "18:00",
+                "temp": 24.2,
+                "hum": 47.6,
+                "press": 1015.1
+            },
+            {
+                "ts": 1700001200000,
+                "timeStr": "20:00",
+                "temp": 24.2,
+                "hum": 47.7,
+                "press": 1015.0
+            },
+            {
+                "ts": 1700001320000,
+                "timeStr": "22:00",
+                "temp": 24.2,
+                "hum": 47.9,
+                "press": 1015.0
+            }
+        ]
+    },
+    "session_trend_log": [
+        {
+            "ts": 1700000000000,
+            "timeStr": "00:00",
+            "temp": 24.3,
+            "hum": 48.4,
+            "press": 1015.0
+        },
+        {
+            "ts": 1700000120000,
+            "timeStr": "02:00",
+            "temp": 24.4,
+            "hum": 48.4,
+            "press": 1015.1
+        },
+        {
+            "ts": 1700000240000,
+            "timeStr": "04:00",
+            "temp": 24.4,
+            "hum": 48.3,
+            "press": 1015.1
+        },
+        {
+            "ts": 1700000360000,
+            "timeStr": "06:00",
+            "temp": 24.4,
+            "hum": 48.1,
+            "press": 1015.2
+        },
+        {
+            "ts": 1700000480000,
+            "timeStr": "08:00",
+            "temp": 24.4,
+            "hum": 48.0,
+            "press": 1015.2
+        },
+        {
+            "ts": 1700000600000,
+            "timeStr": "10:00",
+            "temp": 24.4,
+            "hum": 47.8,
+            "press": 1015.2
+        },
+        {
+            "ts": 1700000720000,
+            "timeStr": "12:00",
+            "temp": 24.3,
+            "hum": 47.7,
+            "press": 1015.2
+        },
+        {
+            "ts": 1700000840000,
+            "timeStr": "14:00",
+            "temp": 24.2,
+            "hum": 47.6,
+            "press": 1015.2
+        },
+        {
+            "ts": 1700000960000,
+            "timeStr": "16:00",
+            "temp": 24.2,
+            "hum": 47.6,
+            "press": 1015.1
+        },
+        {
+            "ts": 1700001080000,
+            "timeStr": "18:00",
+            "temp": 24.2,
+            "hum": 47.6,
+            "press": 1015.1
+        },
+        {
+            "ts": 1700001200000,
+            "timeStr": "20:00",
+            "temp": 24.2,
+            "hum": 47.7,
+            "press": 1015.0
+        },
+        {
+            "ts": 1700001320000,
+            "timeStr": "22:00",
+            "temp": 24.2,
+            "hum": 47.9,
+            "press": 1015.0
+        }
+    ]
+}

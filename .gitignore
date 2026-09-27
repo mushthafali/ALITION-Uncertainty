@@ -1,0 +1,23 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# PyInstaller build artifacts
+build/
+dist/
+*.exe
+*.manifest
+*.spec.bak
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Temporary & Log files
+*.log
+*.tmp
+*.bak
