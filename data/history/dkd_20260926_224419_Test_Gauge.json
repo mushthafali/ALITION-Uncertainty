@@ -1,0 +1,594 @@
+{
+    "version": "2.0.0",
+    "timestamp": "2026-09-26T22:44:19.838431",
+    "input": {
+        "metadata": {
+            "operator_name": "ALI",
+            "instrument_model": "Test Gauge",
+            "serial_number": "009-0",
+            "tag_number": "PT-303",
+            "date": "2026-09-26",
+            "location": "LAB",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "lrv": 0,
+        "urv": 100,
+        "tolerance_pct": 1,
+        "points": []
+    },
+    "result": {
+        "overall_status": "PASS"
+    },
+    "dkd_data": {
+        "meta": {
+            "operator_name": "ALI",
+            "instrument_model": "Test Gauge",
+            "serial_number": "009-0",
+            "tag_number": "PT-303",
+            "date": "2026-09-26",
+            "location": "LAB",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "setup": {
+            "input_unit": "bar",
+            "lrv": 0,
+            "urv": 100,
+            "resolution": 0.01,
+            "mpe_percent": 1,
+            "calibrator_type": "DIGITAL",
+            "height_diff": 0,
+            "medium_density": 1.2,
+            "std_full_scale": 100,
+            "std_accuracy_percent": 0.025,
+            "u_standard_dwt": 0,
+            "alpha_beta": 0,
+            "rho_m": 8000,
+            "lambda_val": 0
+        },
+        "sequence": "C",
+        "setpoints": [
+            0,
+            25,
+            50,
+            75,
+            100
+        ],
+        "mSeries": [
+            "M1",
+            "M2"
+        ],
+        "preloadData": [
+            {
+                "cycle": 1,
+                "round": 1,
+                "reading_max": 100,
+                "env_max": {
+                    "temperature": 24.5,
+                    "humidity": 46.8916,
+                    "pressure_atm": 1013.244
+                },
+                "reading_zero": 0,
+                "env_zero": {
+                    "temperature": 24.5,
+                    "humidity": 46.9502,
+                    "pressure_atm": 1013.257
+                }
+            }
+        ],
+        "measurementData": {
+            "M1": [
+                {
+                    "setpoint_pct": 0,
+                    "nominal_ideal": 0,
+                    "reading_master": 0,
+                    "reading_uut": 0,
+                    "env": {
+                        "temperature": 24.51,
+                        "humidity": 47.05566,
+                        "pressure_atm": 1013.252
+                    },
+                    "timestamp": "2026-09-26T15:42:36.515Z"
+                },
+                {
+                    "setpoint_pct": 25,
+                    "nominal_ideal": 25,
+                    "reading_master": 25,
+                    "reading_uut": 24.6,
+                    "env": {
+                        "temperature": 24.52,
+                        "humidity": 46.85938,
+                        "pressure_atm": 1013.264
+                    },
+                    "timestamp": "2026-09-26T15:42:44.872Z"
+                },
+                {
+                    "setpoint_pct": 50,
+                    "nominal_ideal": 50,
+                    "reading_master": 50,
+                    "reading_uut": 50.3,
+                    "env": {
+                        "temperature": 24.54,
+                        "humidity": 46.68457,
+                        "pressure_atm": 1013.249
+                    },
+                    "timestamp": "2026-09-26T15:42:57.525Z"
+                },
+                {
+                    "setpoint_pct": 75,
+                    "nominal_ideal": 75,
+                    "reading_master": 75,
+                    "reading_uut": 75,
+                    "env": {
+                        "temperature": 24.54,
+                        "humidity": 46.79102,
+                        "pressure_atm": 1013.23
+                    },
+                    "timestamp": "2026-09-26T15:43:02.902Z"
+                },
+                {
+                    "setpoint_pct": 100,
+                    "nominal_ideal": 100,
+                    "reading_master": 100,
+                    "reading_uut": 100,
+                    "env": {
+                        "temperature": 24.56,
+                        "humidity": 46.64063,
+                        "pressure_atm": 1013.27
+                    },
+                    "timestamp": "2026-09-26T15:43:13.287Z"
+                }
+            ],
+            "M2": [
+                {
+                    "setpoint_pct": 100,
+                    "nominal_ideal": 100,
+                    "reading_master": 100,
+                    "reading_uut": 100,
+                    "env": {
+                        "temperature": 24.57,
+                        "humidity": 46.62988,
+                        "pressure_atm": 1013.26
+                    },
+                    "timestamp": "2026-09-26T15:43:20.490Z"
+                },
+                {
+                    "setpoint_pct": 75,
+                    "nominal_ideal": 75,
+                    "reading_master": 75,
+                    "reading_uut": 74.8,
+                    "env": {
+                        "temperature": 24.58,
+                        "humidity": 46.60645,
+                        "pressure_atm": 1013.25
+                    },
+                    "timestamp": "2026-09-26T15:43:31.481Z"
+                },
+                {
+                    "setpoint_pct": 50,
+                    "nominal_ideal": 50,
+                    "reading_master": 50,
+                    "reading_uut": 50.1,
+                    "env": {
+                        "temperature": 24.59,
+                        "humidity": 46.53711,
+                        "pressure_atm": 1013.245
+                    },
+                    "timestamp": "2026-09-26T15:43:37.272Z"
+                },
+                {
+                    "setpoint_pct": 25,
+                    "nominal_ideal": 25,
+                    "reading_master": 25,
+                    "reading_uut": 25,
+                    "env": {
+                        "temperature": 24.59,
+                        "humidity": 46.52637,
+                        "pressure_atm": 1013.237
+                    },
+                    "timestamp": "2026-09-26T15:43:43.435Z"
+                },
+                {
+                    "setpoint_pct": 0,
+                    "nominal_ideal": 0,
+                    "reading_master": 0,
+                    "reading_uut": 0,
+                    "env": {
+                        "temperature": 24.6,
+                        "humidity": 46.58594,
+                        "pressure_atm": 1013.239
+                    },
+                    "timestamp": "2026-09-26T15:43:47.232Z"
+                }
+            ]
+        },
+        "zeroSettingData": null,
+        "rowResults": [
+            {
+                "pct": 0,
+                "nom_ideal": 0,
+                "master_vals": {
+                    "M1": 0,
+                    "M2": 0
+                },
+                "m_vals": {
+                    "M1": 0,
+                    "M2": 0
+                },
+                "p_std": 0,
+                "mean": 0,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.014720033237854462,
+                "U": 0.029440066475708924,
+                "pass": true
+            },
+            {
+                "pct": 25,
+                "nom_ideal": 25,
+                "master_vals": {
+                    "M1": 25,
+                    "M2": 25
+                },
+                "m_vals": {
+                    "M1": 24.6,
+                    "M2": 25
+                },
+                "p_std": 25,
+                "mean": 24.8,
+                "dev": -0.1999999999999993,
+                "h_f": 0.3999999999999986,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0.11547344110854463,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.11640788194951433,
+                "U": 0.23281576389902867,
+                "pass": true
+            },
+            {
+                "pct": 50,
+                "nom_ideal": 50,
+                "master_vals": {
+                    "M1": 50,
+                    "M2": 50
+                },
+                "m_vals": {
+                    "M1": 50.3,
+                    "M2": 50.1
+                },
+                "p_std": 50,
+                "mean": 50.2,
+                "dev": 0.20000000000000284,
+                "h_f": 0.19999999999999574,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0.05773672055427129,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.05958362425101005,
+                "U": 0.1191672485020201,
+                "pass": true
+            },
+            {
+                "pct": 75,
+                "nom_ideal": 75,
+                "master_vals": {
+                    "M1": 75,
+                    "M2": 75
+                },
+                "m_vals": {
+                    "M1": 75,
+                    "M2": 74.8
+                },
+                "p_std": 75,
+                "mean": 74.9,
+                "dev": -0.09999999999999432,
+                "h_f": 0.20000000000000284,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0.05773672055427334,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.05958362425101204,
+                "U": 0.11916724850202408,
+                "pass": true
+            },
+            {
+                "pct": 100,
+                "nom_ideal": 100,
+                "master_vals": {
+                    "M1": 100,
+                    "M2": 100
+                },
+                "m_vals": {
+                    "M1": 100,
+                    "M2": 100
+                },
+                "p_std": 100,
+                "mean": 100,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.014720033237854462,
+                "U": 0.029440066475708924,
+                "pass": true
+            }
+        ],
+        "u_std": 0.01443418013856813,
+        "u_res": 0.002886836027713626,
+        "u_f0": 0,
+        "mpe_val": 1,
+        "raw_unit": "bar",
+        "avg_env": {
+            "temperature": 24.56,
+            "humidity": 46.691701,
+            "pressure_atm": 1013.2495999999999
+        },
+        "session_trend_log": [
+            {
+                "ts": 1790437341540,
+                "timeStr": "00:00",
+                "temp": 24.5,
+                "hum": 46.8916,
+                "press": 1013.244
+            },
+            {
+                "ts": 1790437346562,
+                "timeStr": "00:05",
+                "temp": 24.5,
+                "hum": 46.9502,
+                "press": 1013.257
+            },
+            {
+                "ts": 1790437351524,
+                "timeStr": "00:09",
+                "temp": 24.51,
+                "hum": 47.05566,
+                "press": 1013.252
+            },
+            {
+                "ts": 1790437356542,
+                "timeStr": "00:15",
+                "temp": 24.51,
+                "hum": 46.79883,
+                "press": 1013.242
+            },
+            {
+                "ts": 1790437361791,
+                "timeStr": "00:20",
+                "temp": 24.52,
+                "hum": 46.85938,
+                "press": 1013.264
+            },
+            {
+                "ts": 1790437366481,
+                "timeStr": "00:24",
+                "temp": 24.53,
+                "hum": 46.85938,
+                "press": 1013.263
+            },
+            {
+                "ts": 1790437371544,
+                "timeStr": "00:30",
+                "temp": 24.54,
+                "hum": 46.79004,
+                "press": 1013.239
+            },
+            {
+                "ts": 1790437376482,
+                "timeStr": "00:34",
+                "temp": 24.54,
+                "hum": 46.68457,
+                "press": 1013.249
+            },
+            {
+                "ts": 1790437381531,
+                "timeStr": "00:39",
+                "temp": 24.54,
+                "hum": 46.79102,
+                "press": 1013.23
+            },
+            {
+                "ts": 1790437386540,
+                "timeStr": "00:45",
+                "temp": 24.56,
+                "hum": 46.79199,
+                "press": 1013.242
+            },
+            {
+                "ts": 1790437391533,
+                "timeStr": "00:49",
+                "temp": 24.56,
+                "hum": 46.64063,
+                "press": 1013.27
+            },
+            {
+                "ts": 1790437396476,
+                "timeStr": "00:54",
+                "temp": 24.57,
+                "hum": 46.62988,
+                "press": 1013.26
+            },
+            {
+                "ts": 1790437401532,
+                "timeStr": "00:59",
+                "temp": 24.57,
+                "hum": 46.6416,
+                "press": 1013.202
+            },
+            {
+                "ts": 1790437406536,
+                "timeStr": "01:04",
+                "temp": 24.58,
+                "hum": 46.60645,
+                "press": 1013.25
+            },
+            {
+                "ts": 1790437411515,
+                "timeStr": "01:09",
+                "temp": 24.59,
+                "hum": 46.56055,
+                "press": 1013.245
+            },
+            {
+                "ts": 1790437416523,
+                "timeStr": "01:14",
+                "temp": 24.59,
+                "hum": 46.53711,
+                "press": 1013.245
+            },
+            {
+                "ts": 1790437421572,
+                "timeStr": "01:20",
+                "temp": 24.59,
+                "hum": 46.52637,
+                "press": 1013.237
+            },
+            {
+                "ts": 1790437426574,
+                "timeStr": "01:25",
+                "temp": 24.6,
+                "hum": 46.58594,
+                "press": 1013.239
+            }
+        ]
+    },
+    "session_trend_log": [
+        {
+            "ts": 1790437341540,
+            "timeStr": "00:00",
+            "temp": 24.5,
+            "hum": 46.8916,
+            "press": 1013.244
+        },
+        {
+            "ts": 1790437346562,
+            "timeStr": "00:05",
+            "temp": 24.5,
+            "hum": 46.9502,
+            "press": 1013.257
+        },
+        {
+            "ts": 1790437351524,
+            "timeStr": "00:09",
+            "temp": 24.51,
+            "hum": 47.05566,
+            "press": 1013.252
+        },
+        {
+            "ts": 1790437356542,
+            "timeStr": "00:15",
+            "temp": 24.51,
+            "hum": 46.79883,
+            "press": 1013.242
+        },
+        {
+            "ts": 1790437361791,
+            "timeStr": "00:20",
+            "temp": 24.52,
+            "hum": 46.85938,
+            "press": 1013.264
+        },
+        {
+            "ts": 1790437366481,
+            "timeStr": "00:24",
+            "temp": 24.53,
+            "hum": 46.85938,
+            "press": 1013.263
+        },
+        {
+            "ts": 1790437371544,
+            "timeStr": "00:30",
+            "temp": 24.54,
+            "hum": 46.79004,
+            "press": 1013.239
+        },
+        {
+            "ts": 1790437376482,
+            "timeStr": "00:34",
+            "temp": 24.54,
+            "hum": 46.68457,
+            "press": 1013.249
+        },
+        {
+            "ts": 1790437381531,
+            "timeStr": "00:39",
+            "temp": 24.54,
+            "hum": 46.79102,
+            "press": 1013.23
+        },
+        {
+            "ts": 1790437386540,
+            "timeStr": "00:45",
+            "temp": 24.56,
+            "hum": 46.79199,
+            "press": 1013.242
+        },
+        {
+            "ts": 1790437391533,
+            "timeStr": "00:49",
+            "temp": 24.56,
+            "hum": 46.64063,
+            "press": 1013.27
+        },
+        {
+            "ts": 1790437396476,
+            "timeStr": "00:54",
+            "temp": 24.57,
+            "hum": 46.62988,
+            "press": 1013.26
+        },
+        {
+            "ts": 1790437401532,
+            "timeStr": "00:59",
+            "temp": 24.57,
+            "hum": 46.6416,
+            "press": 1013.202
+        },
+        {
+            "ts": 1790437406536,
+            "timeStr": "01:04",
+            "temp": 24.58,
+            "hum": 46.60645,
+            "press": 1013.25
+        },
+        {
+            "ts": 1790437411515,
+            "timeStr": "01:09",
+            "temp": 24.59,
+            "hum": 46.56055,
+            "press": 1013.245
+        },
+        {
+            "ts": 1790437416523,
+            "timeStr": "01:14",
+            "temp": 24.59,
+            "hum": 46.53711,
+            "press": 1013.245
+        },
+        {
+            "ts": 1790437421572,
+            "timeStr": "01:20",
+            "temp": 24.59,
+            "hum": 46.52637,
+            "press": 1013.237
+        },
+        {
+            "ts": 1790437426574,
+            "timeStr": "01:25",
+            "temp": 24.6,
+            "hum": 46.58594,
+            "press": 1013.239
+        }
+    ]
+}

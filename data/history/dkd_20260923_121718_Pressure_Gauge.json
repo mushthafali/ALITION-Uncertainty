@@ -1,0 +1,338 @@
+{
+    "version": "2.0.0",
+    "timestamp": "2026-09-23T12:17:18.867326",
+    "input": {
+        "metadata": {
+            "operator_name": "Technician",
+            "instrument_model": "Pressure Gauge",
+            "serial_number": "SN-001",
+            "tag_number": "PT-101",
+            "date": "2026-09-23",
+            "location": "Calibration Lab",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "lrv": 0,
+        "urv": 100,
+        "tolerance_pct": 0.9,
+        "points": []
+    },
+    "result": {
+        "overall_status": "PASS"
+    },
+    "dkd_data": {
+        "meta": {
+            "operator_name": "Technician",
+            "instrument_model": "Pressure Gauge",
+            "serial_number": "SN-001",
+            "tag_number": "PT-101",
+            "date": "2026-09-23",
+            "location": "Calibration Lab",
+            "calibration_standard": "DKD-R 6-1"
+        },
+        "setup": {
+            "input_unit": "bar",
+            "lrv": 0,
+            "urv": 100,
+            "resolution": 0.01,
+            "mpe_percent": 0.9,
+            "calibrator_type": "DIGITAL",
+            "height_diff": 0,
+            "medium_density": 1.2,
+            "std_full_scale": 100,
+            "std_accuracy_percent": 0.1,
+            "u_standard_dwt": 0,
+            "alpha_beta": 0,
+            "rho_m": 8000,
+            "lambda_val": 0
+        },
+        "sequence": "C",
+        "setpoints": [
+            0,
+            25,
+            50,
+            75,
+            100
+        ],
+        "mSeries": [
+            "M1",
+            "M2"
+        ],
+        "preloadData": [
+            {
+                "cycle": 1,
+                "round": 1,
+                "reading_max": 100,
+                "env_max": {
+                    "temperature": null,
+                    "humidity": null,
+                    "pressure_atm": null
+                },
+                "reading_zero": 0,
+                "env_zero": {
+                    "temperature": null,
+                    "humidity": null,
+                    "pressure_atm": null
+                }
+            }
+        ],
+        "measurementData": {
+            "M1": [
+                {
+                    "setpoint_pct": 0,
+                    "nominal_ideal": 0,
+                    "reading_master": 0,
+                    "reading_uut": 0,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:16.276Z"
+                },
+                {
+                    "setpoint_pct": 25,
+                    "nominal_ideal": 25,
+                    "reading_master": 25,
+                    "reading_uut": 25,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:22.560Z"
+                },
+                {
+                    "setpoint_pct": 50,
+                    "nominal_ideal": 50,
+                    "reading_master": 50,
+                    "reading_uut": 50,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:27.856Z"
+                },
+                {
+                    "setpoint_pct": 75,
+                    "nominal_ideal": 75,
+                    "reading_master": 75,
+                    "reading_uut": 75,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:33.706Z"
+                },
+                {
+                    "setpoint_pct": 100,
+                    "nominal_ideal": 100,
+                    "reading_master": 100,
+                    "reading_uut": 100,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:40.950Z"
+                }
+            ],
+            "M2": [
+                {
+                    "setpoint_pct": 100,
+                    "nominal_ideal": 100,
+                    "reading_master": 100,
+                    "reading_uut": 100,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:48.784Z"
+                },
+                {
+                    "setpoint_pct": 75,
+                    "nominal_ideal": 75,
+                    "reading_master": 75,
+                    "reading_uut": 75,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:16:55.748Z"
+                },
+                {
+                    "setpoint_pct": 50,
+                    "nominal_ideal": 50,
+                    "reading_master": 50,
+                    "reading_uut": 50,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:17:01.654Z"
+                },
+                {
+                    "setpoint_pct": 25,
+                    "nominal_ideal": 25,
+                    "reading_master": 25,
+                    "reading_uut": 25,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:17:07.964Z"
+                },
+                {
+                    "setpoint_pct": 0,
+                    "nominal_ideal": 0,
+                    "reading_master": 0,
+                    "reading_uut": 0,
+                    "env": {
+                        "temperature": null,
+                        "humidity": null,
+                        "pressure_atm": null
+                    },
+                    "timestamp": "2026-09-23T05:17:12.514Z"
+                }
+            ]
+        },
+        "zeroSettingData": null,
+        "rowResults": [
+            {
+                "pct": 0,
+                "nom_ideal": 0,
+                "master_vals": {
+                    "M1": 0,
+                    "M2": 0
+                },
+                "m_vals": {
+                    "M1": 0,
+                    "M2": 0
+                },
+                "p_std": 0,
+                "mean": 0,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.057808846404448,
+                "U": 0.115617692808896,
+                "pass": true
+            },
+            {
+                "pct": 25,
+                "nom_ideal": 25,
+                "master_vals": {
+                    "M1": 25,
+                    "M2": 25
+                },
+                "m_vals": {
+                    "M1": 25,
+                    "M2": 25
+                },
+                "p_std": 25,
+                "mean": 25,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.057808846404448,
+                "U": 0.115617692808896,
+                "pass": true
+            },
+            {
+                "pct": 50,
+                "nom_ideal": 50,
+                "master_vals": {
+                    "M1": 50,
+                    "M2": 50
+                },
+                "m_vals": {
+                    "M1": 50,
+                    "M2": 50
+                },
+                "p_std": 50,
+                "mean": 50,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.057808846404448,
+                "U": 0.115617692808896,
+                "pass": true
+            },
+            {
+                "pct": 75,
+                "nom_ideal": 75,
+                "master_vals": {
+                    "M1": 75,
+                    "M2": 75
+                },
+                "m_vals": {
+                    "M1": 75,
+                    "M2": 75
+                },
+                "p_std": 75,
+                "mean": 75,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.057808846404448,
+                "U": 0.115617692808896,
+                "pass": true
+            },
+            {
+                "pct": 100,
+                "nom_ideal": 100,
+                "master_vals": {
+                    "M1": 100,
+                    "M2": 100
+                },
+                "m_vals": {
+                    "M1": 100,
+                    "M2": 100
+                },
+                "p_std": 100,
+                "mean": 100,
+                "dev": 0,
+                "h_f": 0,
+                "b_prime_f": null,
+                "b_f": null,
+                "u_h": 0,
+                "u_b_prime": 0,
+                "u_b": 0,
+                "u_c": 0.057808846404448,
+                "U": 0.115617692808896,
+                "pass": true
+            }
+        ],
+        "u_std": 0.05773672055427252,
+        "u_res": 0.002886836027713626,
+        "u_f0": 0,
+        "mpe_val": 0.9000000000000001,
+        "raw_unit": "bar",
+        "avg_env": {
+            "temperature": 20,
+            "humidity": 50,
+            "pressure_atm": 1013.25
+        }
+    }
+}
